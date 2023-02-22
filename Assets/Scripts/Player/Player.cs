@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,23 +10,13 @@ public class Player : MonoBehaviour
     [SerializeField] private float playerDMG;
     [SerializeField] private float playerXPos;
     [SerializeField] private float playerYPos;
+
+    [SerializeField] private Bullet playerBullet;
+    [SerializeField] private float playerShootCooldown;
+    [SerializeField] private float playerShootTime;
     
-    
-    public GameObject WallsLeft;
-    public GameObject WallsRight;
-    public GameObject WallsTop;
-    public GameObject WallsBottom;
-
-    private Vector3 boundLeft;
-    private Vector3 boundRight;
-    private Vector3 boundTop;
-    private Vector3 boundBottom;
-
-
     void Start()
     {
-        
-        SetupBoundaries();
     }
 
     // Update is called once per frame
@@ -37,8 +28,16 @@ public class Player : MonoBehaviour
             playerYPos = Input.GetAxis("Vertical");
             UpdatePosition(playerXPos, playerYPos);
         }
+    }
 
-
+    private void Update()
+    {
+        playerShootTime += Time.deltaTime;
+        if (Input.GetButton("Fire1") && playerShootTime > playerShootCooldown)
+        {
+            playerShootTime = 0;
+            ShootingBullet();
+        }
     }
 
     void SetSpeed(bool powerUp)
@@ -55,27 +54,22 @@ public class Player : MonoBehaviour
 
     void UpdatePosition(float xPos, float yPos)
     {
-        if (xPos < boundRight.x && xPos > boundLeft.x && yPos > boundBottom.y && yPos < boundTop.y)
-        {
             transform.Translate(new Vector3(xPos,yPos) * playerSpeed * Time.deltaTime);
-        }
     }
 
-    void SetupBoundaries()
-    {
-        boundLeft = WallsLeft.transform.position;
-        boundRight = WallsRight.transform.position;
-        boundTop = WallsTop.transform.position;
-        boundBottom = WallsBottom.transform.position;
-
-    }
-    
     void OnCollisionEnter(Collision collision) 
     {
-        Debug.Log("COLLISSION");
         if(collision.gameObject.name == "Left")  // or if(gameObject.CompareTag("YourWallTag"))
         {
             playerSpeed = 0;
         }
+    }
+
+    void ShootingBullet()
+    {
+        Debug.Log(gameObject.transform.position);
+        Debug.Log("Test");
+        print("Test");
+        Instantiate(playerBullet, gameObject.transform.position, Quaternion.identity);
     }
 }
