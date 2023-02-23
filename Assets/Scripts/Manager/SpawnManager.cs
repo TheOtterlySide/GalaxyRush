@@ -53,10 +53,9 @@ public class SpawnManager : MonoBehaviour
         int tempCounter = 0;
         Quaternion tempAngle;
         Vector3 tempPos;
-        float offset;
+        
         for (int i = 0; i < EnemyCounter; i++)
         {
-            Debug.Log("Heres");
             tempCounter = Random.Range(1, 3);
             tempAngle = Quaternion.identity;
             tempPos = SpawnPoints[tempCounter].transform.position;

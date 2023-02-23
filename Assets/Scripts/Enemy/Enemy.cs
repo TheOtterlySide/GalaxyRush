@@ -24,4 +24,18 @@ public class Enemy : MonoBehaviour
     {
         enemySpeed = Random.Range(1, 9);
     }
+    
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.transform.name == "Player")
+        {
+            DestroySelf();
+        }
+    }
+    
+    internal void DestroySelf()
+    {
+        gameObject.SetActive(false);
+        Destroy(gameObject);
+    }
 }

@@ -10,13 +10,22 @@ public class Player : MonoBehaviour
     [SerializeField] private float playerDMG;
     [SerializeField] private float playerXPos;
     [SerializeField] private float playerYPos;
+    
+    public bool playerAlive;
+    public int playerLife;
+    
+    [SerializeField] private bool playerPowerStatus;
 
     [SerializeField] private Bullet playerBullet;
     [SerializeField] private float playerShootCooldown;
     [SerializeField] private float playerShootTime;
+    [SerializeField] private float playerPowerCooldown;
+    [SerializeField] private float playerPowerTime;
     
     void Start()
     {
+        playerPowerStatus = false;
+        playerAlive = true;
     }
 
     // Update is called once per frame
@@ -38,16 +47,29 @@ public class Player : MonoBehaviour
             playerShootTime = 0;
             ShootingBullet();
         }
+
+        if (playerPowerStatus == true)
+        {
+            playerPowerTime += Time.deltaTime;
+            if (playerPowerTime > playerPowerCooldown)
+            {
+                playerPowerTime = 0;
+                OnPowerUp(false);
+            }
+        }
     }
 
-    void SetSpeed(bool powerUp)
+    void OnPowerUp(bool powerUp)
     {
-        if (powerUp == true)
+        if (powerUp == true && playerPowerStatus == false)
         {
+            playerPowerStatus = true;
             playerSpeed *= 2;
         }
         else
         {
+            playerPowerStatus = false;
+            playerPowerTime = 0;
             playerSpeed /= 2;
         }
     }
@@ -57,16 +79,34 @@ public class Player : MonoBehaviour
             transform.Translate(new Vector3(xPos,yPos) * playerSpeed * Time.deltaTime);
     }
 
-    void OnCollisionEnter(Collision collision) 
+    void OnCollisionEnter2D(Collision2D collision) 
     {
-        if(collision.gameObject.name == "Left")  // or if(gameObject.CompareTag("YourWallTag"))
+        if (collision.gameObject.tag == "PowerUp")
         {
-            playerSpeed = 0;
+            OnPowerUp(true);
+        }
+
+        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "BulletEnemy")
+        {
+            HandleLife();
         }
     }
 
     void ShootingBullet()
     {
         Instantiate(playerBullet, gameObject.transform.position, Quaternion.identity);
+    }
+
+    void HandleLife()
+    {
+        if (playerLife != 0)
+        {
+            playerLife--;
+        }
+        else
+        {
+            playerLife = 0;
+            playerAlive = false;
+        }
     }
 }

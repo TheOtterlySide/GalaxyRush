@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     internal static GameManager Instance;
     // Start is called before the first frame update
     [SerializeField] private bool GameRunning;
+    [SerializeField] private Player playerObject;
     void Start()
     {
         GameRunning = true;
@@ -15,7 +16,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        CheckForPlayer();
     }
     private void Awake()
     {
@@ -28,5 +29,12 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    
+
+    void CheckForPlayer()
+    {
+        if (playerObject.playerAlive == false) 
+        {
+            GameRunning = false;
+        }
+    }
 }

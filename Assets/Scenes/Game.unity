@@ -623,9 +623,12 @@ MonoBehaviour:
   playerDMG: 0
   playerXPos: 0
   playerYPos: 0
+  playerPowerStatus: 0
   playerBullet: {fileID: 820938308251028233, guid: 94a29c20b2e9c4d509376a59f592ff75, type: 3}
   playerShootCooldown: 0.5
   playerShootTime: 0
+  playerPowerCooldown: 5
+  playerPowerTime: 0
 --- !u!1 &860387405
 GameObject:
   m_ObjectHideFlags: 0
