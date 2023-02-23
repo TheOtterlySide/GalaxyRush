@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class EnemySpawn : MonoBehaviour
+public class SpawnManager : MonoBehaviour
 {
     [SerializeField] private GameObject SpawnPoint;
     [SerializeField] private GameObject SpawnPoint2;
@@ -18,6 +18,10 @@ public class EnemySpawn : MonoBehaviour
     private int EnemyCounter;
 
     [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private GameObject powerUpPrefab;
+    [SerializeField] private float powerUpCooldown;
+    [SerializeField] private float powerUpActve;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +32,11 @@ public class EnemySpawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        powerUpCooldown += Time.deltaTime;
+        if (powerUpCooldown > powerUpActve)
+        {
+            SpawnPowerup();
+        }
     }
 
     void SetEnemyCounter()
@@ -42,12 +50,23 @@ public class EnemySpawn : MonoBehaviour
     void SpawnEnemies()
     {
         int tempCounter = 0;
+        Quaternion tempAngle;
+        Vector3 tempPos;
+        float offset;
         for (int i = 0; i < EnemyCounter; i++)
         {
             Debug.Log("Heres");
             tempCounter = Random.Range(1, 3);
-            Instantiate(enemyPrefab, SpawnPoints[tempCounter].transform.position, Quaternion.identity);
+            tempAngle = Quaternion.identity;
+            tempPos = SpawnPoints[tempCounter].transform.position;
+            Instantiate(enemyPrefab, tempPos, tempAngle);
         }
-       
+
     }
+
+    void SpawnPowerup()
+    {
+        Instantiate(powerUpPrefab, SpawnPoints[1].transform.position, Quaternion.identity);
+    }
+
 }
