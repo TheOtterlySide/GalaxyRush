@@ -736,8 +736,8 @@ MonoBehaviour:
   SpawnPoint3: {fileID: 1781569224}
   enemyPrefab: {fileID: 7273635592917694482, guid: 16bcc8817ce5c4ea2a4f4ea4196f303e, type: 3}
   powerUpPrefab: {fileID: 7273635592917694482, guid: a903d97202db248b9af0cbbf6fadbc5d, type: 3}
-  powerUpCooldown: 5
-  powerUpActve: 0
+  powerUpCooldown: 0
+  powerUpActve: 20
 --- !u!4 &1592432543
 Transform:
   m_ObjectHideFlags: 0

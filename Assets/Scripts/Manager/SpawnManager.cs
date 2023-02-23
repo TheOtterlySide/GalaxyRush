@@ -35,6 +35,7 @@ public class SpawnManager : MonoBehaviour
         powerUpCooldown += Time.deltaTime;
         if (powerUpCooldown > powerUpActve)
         {
+            powerUpCooldown = 0;
             SpawnPowerup();
         }
     }

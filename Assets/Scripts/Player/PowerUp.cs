@@ -5,10 +5,10 @@ using UnityEngine;
 public class PowerUp : MonoBehaviour
 {
     [SerializeField] 
-    private float speed = 200f;
+    private float speed;
 
     [SerializeField] 
-    private float lifeTime = 5f;
+    private float lifeTime;
     
     
     internal void DestroySelf()
@@ -29,6 +29,7 @@ public class PowerUp : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D other)
     {
+        Debug.Log(other);
         if (other.gameObject.name == "Player")
         {
             DestroySelf();    

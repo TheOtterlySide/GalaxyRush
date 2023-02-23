@@ -146,7 +146,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25b01ce6a731041d0ad15c49a0492c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnPoint: {fileID: 0}
-  pbPowerUp: {fileID: 5808264424751814307}
-  speed: 200
-  lifeTime: 5
+  speed: 3
+  lifeTime: 50
