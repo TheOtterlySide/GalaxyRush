@@ -67,9 +67,6 @@ public class Player : MonoBehaviour
 
     void ShootingBullet()
     {
-        Debug.Log(gameObject.transform.position);
-        Debug.Log("Test");
-        print("Test");
         Instantiate(playerBullet, gameObject.transform.position, Quaternion.identity);
     }
 }
