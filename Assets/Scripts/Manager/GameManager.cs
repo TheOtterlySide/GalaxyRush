@@ -24,6 +24,14 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private Text scoreLabel;
     [SerializeField] private Text playerLife;
+    [SerializeField] private Text playerTime;
+    
+    [SerializeField] private Text FirstPlace;
+    [SerializeField] private Text SecondPlace;
+    [SerializeField] private Text ThirdPlace;
+    
+    [SerializeField] private GameObject EndScene;
+    [SerializeField] private GameObject ScoreBoard;
     
     void Start()
     {
@@ -55,6 +63,7 @@ public class GameManager : MonoBehaviour
         if (playerObject.playerAlive == false) 
         {
             GameRunning = false;
+            GameEnd();
         }
     }
 
@@ -67,6 +76,7 @@ public class GameManager : MonoBehaviour
     {
         scoreLabel.text = "Score: " + Mathf.Round(highscore).ToString();
         playerLife.text = playerObject.playerLife.ToString();
+        playerTime.text = Time.deltaTime.ToString();
     }
 
     void SetupWalls()
@@ -76,5 +86,15 @@ public class GameManager : MonoBehaviour
         Wall_Right.transform.Translate(stageDimensions.x + MainCamera.orthographicSize, 0,0);
         Wall_Top.transform.Translate(0,stageDimensions.y + MainCamera.orthographicSize/2,0);
         Wall_Bottom.transform.Translate(0, -stageDimensions.y - MainCamera.orthographicSize/2, 0);
+    }
+
+    void GameEnd()
+    {
+        EndScene.SetActive(true);
+    }
+
+    void SetHighscore()
+    {
+        
     }
 }
