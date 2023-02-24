@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] private bool GameRunning;
     [SerializeField] private Player playerObject;
+    [SerializeField] public static float highscore;
     void Start()
     {
         GameRunning = true;
@@ -36,5 +37,11 @@ public class GameManager : MonoBehaviour
         {
             GameRunning = false;
         }
+    }
+
+    public static void updateScore(int Score)
+    {
+        highscore += Score;
+        Debug.Log(highscore);
     }
 }
