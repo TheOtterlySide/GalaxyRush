@@ -40,7 +40,7 @@ public class Enemy : MonoBehaviour
         }
     }
     
-    internal void DestroySelf()
+    void DestroySelf()
     {
         gameObject.SetActive(false);
         Destroy(gameObject);
