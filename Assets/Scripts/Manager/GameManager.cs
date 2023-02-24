@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     private Vector2 screenBounds;
 
     [SerializeField] private Text scoreLabel;
+    [SerializeField] private Text playerLife;
     
     void Start()
     {
@@ -65,6 +66,7 @@ public class GameManager : MonoBehaviour
     private void updateUI()
     {
         scoreLabel.text = "Score: " + Mathf.Round(highscore).ToString();
+        playerLife.text = playerObject.playerLife.ToString();
     }
 
     void SetupWalls()
