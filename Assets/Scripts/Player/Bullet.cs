@@ -5,10 +5,10 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] 
-    private float speed = 200f;
+    private float speed;
 
     [SerializeField] 
-    private float lifeTime = 5f;
+    private float lifeTime;
 
     internal void DestroySelf()
     {
@@ -23,12 +23,16 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
-        transform.Translate(speed * Time.deltaTime * Vector2.up);
+        transform.Translate(speed * Time.deltaTime * Vector3.up);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        DestroySelf();
+        if (other.gameObject.tag == "Enemy")
+        {
+            DestroySelf();
+        }
+        
     }
 
 }

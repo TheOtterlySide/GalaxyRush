@@ -27,9 +27,15 @@ public class Enemy : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.transform.tag == "Player" || other.transform.tag == "Bullet")
+        if (other.transform.tag == "Bullet")
         {
             GameManager.updateScore(enemyScore);
+            DestroySelf();
+        }
+
+        if (other.transform.tag == "Player")
+        {
+            GameManager.updateScore(-enemyScore);
             DestroySelf();
         }
     }

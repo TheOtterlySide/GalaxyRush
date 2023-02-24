@@ -42,6 +42,5 @@ public class GameManager : MonoBehaviour
     public static void updateScore(int Score)
     {
         highscore += Score;
-        Debug.Log(highscore);
     }
 }
