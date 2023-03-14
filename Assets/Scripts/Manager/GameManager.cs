@@ -82,10 +82,10 @@ public class GameManager : MonoBehaviour
     void SetupWalls()
     {
         Vector3 stageDimensions = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, Camera.main.nearClipPlane));
-        Wall_Left.transform.position = new Vector3(-stageDimensions.x + 0.5f, 0, 0);
+        Wall_Left.transform.position = new Vector3(-stageDimensions.x - 0.5f, 0, 0);
         Wall_Right.transform.position = new Vector3(stageDimensions.x + 0.5f, 0,0);
         Wall_Top.transform.position = new Vector3(0,stageDimensions.y + 0.5f,0);
-        Wall_Bottom.transform.position = new Vector3(0, -stageDimensions.y + 0.5f, 0);
+        Wall_Bottom.transform.position = new Vector3(0, -stageDimensions.y - 0.5f, 0);
     }
 
     void GameEnd()

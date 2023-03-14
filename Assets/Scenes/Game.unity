@@ -999,7 +999,7 @@ GameObject:
   - component: {fileID: 729436585}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1263,6 +1263,9 @@ MonoBehaviour:
   scoreLabel: {fileID: 1764106062}
   playerLife: {fileID: 1686207662}
   playerTime: {fileID: 0}
+  FirstPlace: {fileID: 0}
+  SecondPlace: {fileID: 0}
+  ThirdPlace: {fileID: 0}
   EndScene: {fileID: 0}
   ScoreBoard: {fileID: 0}
 --- !u!4 &860387407
