@@ -356,6 +356,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 860387406}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: setInputName
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   m_OnDidEndEdit:
     m_PersistentCalls:
       m_Calls: []
@@ -608,7 +620,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &346899272
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1262,12 +1274,10 @@ MonoBehaviour:
   MainCamera: {fileID: 519420031}
   scoreLabel: {fileID: 1764106062}
   playerLife: {fileID: 1686207662}
-  playerTime: {fileID: 0}
-  FirstPlace: {fileID: 0}
-  SecondPlace: {fileID: 0}
-  ThirdPlace: {fileID: 0}
-  EndScene: {fileID: 0}
-  ScoreBoard: {fileID: 0}
+  playerTime: {fileID: 925516538}
+  EndScene: {fileID: 146612990}
+  GO_inputfield: {fileID: 176969292}
+  ScoreBoard: {fileID: 346899271}
 --- !u!4 &860387407
 Transform:
   m_ObjectHideFlags: 0

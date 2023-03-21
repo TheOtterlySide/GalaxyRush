@@ -1,6 +1,7 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,17 +26,22 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Text scoreLabel;
     [SerializeField] private Text playerLife;
     [SerializeField] private Text playerTime;
-    
-    [SerializeField] private Text FirstPlace;
-    [SerializeField] private Text SecondPlace;
-    [SerializeField] private Text ThirdPlace;
-    
+
     [SerializeField] private GameObject EndScene;
-    [SerializeField] private GameObject ScoreBoard;
     
+    
+    private HighscoreEntry HGE;
+    private InputField inputFieldPlayName;
+    [SerializeField] private GameObject GO_inputfield;
+    [SerializeField] private GameObject ScoreBoard;
+    private string playerName;
+    private List<HighscoreEntry> highScorePlayerList;
+    private string highscoreFile = "data.json";
+
     void Start()
     {
         GameRunning = true;
+        inputFieldPlayName = GO_inputfield.GetComponent<InputField>();
         SetupWalls();
     }
 
@@ -93,8 +99,67 @@ public class GameManager : MonoBehaviour
         EndScene.SetActive(true);
     }
 
-    void SetHighscore()
+    public void setInputName()
     {
-        
+        playerName = inputFieldPlayName.text;
+        loadHighscoreList();
     }
+
+    List<HighscoreEntry> sortHighscoreList()
+    {
+        highScorePlayerList = highScorePlayerList.OrderBy(o=>o.highscore).ToList();
+        return highScorePlayerList;
+    }
+    
+    public void Load()
+    {
+        string json = loadHighscoreList();
+        HGE = JsonUtility.FromJson<HighscoreEntry>(json);
+    }
+
+    void Save()
+    {
+        var tempstore = sortHighscoreList();
+        string json = JsonUtility.ToJson(tempstore);
+        WriteToFile(json);
+    }
+    string loadHighscoreList()
+    {
+        string path = GetFilePath(highscoreFile);
+        if (File.Exists(path))
+        {
+            using (StreamReader reader = new StreamReader(path))
+            {
+                string json = reader.ReadToEnd();
+                return json;
+            }
+        }
+        else
+        {
+            Debug.LogWarning("File not found");
+        }
+
+        return "Success";
+    }
+    void WriteToFile(string jsonHighscoreList)
+    {
+        string path = GetFilePath(highscoreFile);
+        FileStream fileStream = new FileStream(path, FileMode.Create);
+
+        using (StreamWriter writer = new StreamWriter(fileStream))
+        {
+            writer.Write(jsonHighscoreList);
+        }
+    }
+    
+    private string GetFilePath(string fileName)
+    {
+        return Application.persistentDataPath + "/" + fileName;
+    }
+}
+
+public class HighscoreEntry
+{
+    public string username { get; set; }
+    public float highscore { get; set; }
 }
