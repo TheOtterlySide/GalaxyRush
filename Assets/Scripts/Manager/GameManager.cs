@@ -102,7 +102,8 @@ public class GameManager : MonoBehaviour
     public void setInputName()
     {
         playerName = inputFieldPlayName.text;
-        loadHighscoreList();
+        Load();
+        Save();
     }
 
     List<HighscoreEntry> sortHighscoreList()
@@ -114,15 +115,39 @@ public class GameManager : MonoBehaviour
     public void Load()
     {
         string json = loadHighscoreList();
-        HGE = JsonUtility.FromJson<HighscoreEntry>(json);
+        
+        if (json != null)
+        {
+            highScorePlayerList = JsonUtility.FromJson<List<HighscoreEntry>>(json);
+        }
+        else
+        {
+            highScorePlayerList = new List<HighscoreEntry>();
+        }
+  
     }
 
     void Save()
     {
         var tempstore = sortHighscoreList();
+        for (int i = 0; i < tempstore.Count; i++)
+        {
+            if (HGE.highscore > tempstore[i].highscore)
+            {
+                tempstore.Insert(i,HGE);
+            }
+        }
+
+        if (tempstore.Count > 10)
+        {
+            tempstore.RemoveAt(11);
+        }
         string json = JsonUtility.ToJson(tempstore);
+        Debug.Log(json);
         WriteToFile(json);
     }
+    
+    
     string loadHighscoreList()
     {
         string path = GetFilePath(highscoreFile);
@@ -136,7 +161,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("File not found");
+            return null;
         }
 
         return "Success";
