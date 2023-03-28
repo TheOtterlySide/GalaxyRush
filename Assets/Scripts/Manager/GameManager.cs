@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -37,6 +36,10 @@ public class GameManager : MonoBehaviour
     private string playerName;
     private List<HighscoreEntry> highScorePlayerList;
     private string highscoreFile = "data.json";
+
+    [SerializeField] private GameObject GO_Highscore1;
+    [SerializeField] private GameObject GO_Highscore2;
+    [SerializeField] private GameObject GO_Highscore3;
 
     void Start()
     {
@@ -104,6 +107,7 @@ public class GameManager : MonoBehaviour
         playerName = inputFieldPlayName.text;
         Load();
         Save();
+        
     }
 
     List<HighscoreEntry> sortHighscoreList()
@@ -111,8 +115,20 @@ public class GameManager : MonoBehaviour
         highScorePlayerList = highScorePlayerList.OrderBy(o=>o.highscore).ToList();
         return highScorePlayerList;
     }
+
+    void ShowHighscoreTable()
+    {
+        var GO_Highscore1T = GO_Highscore1.AddComponent<Text>();
+        var GO_Highscore2T = GO_Highscore1.AddComponent<Text>();
+        var GO_Highscore3T = GO_Highscore1.AddComponent<Text>();
+
+        GO_Highscore1T.text = highScorePlayerList[0].highscore + " " + highScorePlayerList[0].username;
+        GO_Highscore2T.text = highScorePlayerList[1].highscore + " " + highScorePlayerList[1].username;
+        GO_Highscore3T.text = highScorePlayerList[2].highscore + " " + highScorePlayerList[2].username;
+
+    }
     
-    public void Load()
+    private void Load()
     {
         string json = loadHighscoreList();
         
@@ -163,8 +179,6 @@ public class GameManager : MonoBehaviour
         {
             return null;
         }
-
-        return "Success";
     }
     void WriteToFile(string jsonHighscoreList)
     {

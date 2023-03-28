@@ -620,7 +620,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &346899272
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1278,6 +1278,9 @@ MonoBehaviour:
   EndScene: {fileID: 146612990}
   GO_inputfield: {fileID: 176969292}
   ScoreBoard: {fileID: 346899271}
+  GO_Highscore1: {fileID: 1036182443}
+  GO_Highscore2: {fileID: 886062088}
+  GO_Highscore3: {fileID: 1949434650}
 --- !u!4 &860387407
 Transform:
   m_ObjectHideFlags: 0
@@ -1305,7 +1308,7 @@ GameObject:
   - component: {fileID: 886062091}
   - component: {fileID: 886062090}
   m_Layer: 5
-  m_Name: Text (Legacy) (1)
+  m_Name: SecondPlace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1545,7 +1548,7 @@ GameObject:
   - component: {fileID: 1036182446}
   - component: {fileID: 1036182445}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: FirstPlace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2344,7 +2347,7 @@ GameObject:
   - component: {fileID: 1949434653}
   - component: {fileID: 1949434652}
   m_Layer: 5
-  m_Name: Text (Legacy) (1)
+  m_Name: ThirdPlace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
