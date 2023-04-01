@@ -29,7 +29,6 @@ public class PowerUp : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log(other);
         if (other.gameObject.name == "Player")
         {
             DestroySelf();    

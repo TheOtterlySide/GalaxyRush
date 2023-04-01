@@ -19,8 +19,13 @@ public class SpawnManager : MonoBehaviour
 
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private GameObject powerUpPrefab;
-    [SerializeField] private float powerUpCooldown;
-    [SerializeField] private float powerUpActve;
+    [SerializeField] private float powerUpSpawn;
+    [SerializeField] private float powerUpDelay;
+    
+    [SerializeField] private float enemySpawn;
+    [SerializeField] private float enemyDelay;
+
+    private List<GameObject> enemyList = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
@@ -32,17 +37,26 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        powerUpCooldown += Time.deltaTime;
-        if (powerUpCooldown > powerUpActve)
+
+        if (Time.time >= powerUpSpawn)
         {
-            powerUpCooldown = 0;
+            powerUpSpawn = Time.time + powerUpDelay;
             SpawnPowerup();
+        }
+
+        if (Time.time >= enemySpawn)
+        {
+            enemySpawn = Time.time + enemyDelay;
+            if (enemyList.Count == 0)
+            {
+                SpawnEnemies();
+            }
         }
     }
 
     void SetEnemyCounter()
     {
-        EnemyCounter = Random.Range(1, 10);
+        EnemyCounter = Random.Range(0, 10);
         SpawnPoints.Add(SpawnPoint);
         SpawnPoints.Add(SpawnPoint2);
         SpawnPoints.Add(SpawnPoint3);
@@ -56,10 +70,11 @@ public class SpawnManager : MonoBehaviour
         
         for (int i = 0; i < EnemyCounter; i++)
         {
-            tempCounter = Random.Range(1, 3);
+            tempCounter = Random.Range(0, 3);
             tempAngle = Quaternion.identity;
             tempPos = SpawnPoints[tempCounter].transform.position;
             Instantiate(enemyPrefab, tempPos, tempAngle);
+            enemyList.Add(enemyPrefab);
         }
 
     }

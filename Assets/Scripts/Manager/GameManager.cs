@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour
         {
             scoreLabel.text = "Score: " + Mathf.Round(highscore).ToString();
             playerLife.text = playerObject.playerLife.ToString();
-            playerTime.text = Time.deltaTime.ToString();
+            playerTime.text = Time.time.ToString();
         }
        
     }

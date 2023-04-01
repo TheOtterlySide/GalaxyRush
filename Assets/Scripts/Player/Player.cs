@@ -88,12 +88,12 @@ public class Player : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision) 
     {
-        if (collision.gameObject.tag == "PowerUp")
+        if (collision.gameObject.CompareTag("PowerUp"))
         {
             OnPowerUp(true);
         }
 
-        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "BulletEnemy")
+        if (collision.gameObject.tag is "Enemy" or "BulletEnemy")
         {
             HandleLife();
         }
