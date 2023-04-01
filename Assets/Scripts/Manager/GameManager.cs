@@ -79,13 +79,21 @@ public class GameManager : MonoBehaviour
     public static void updateScore(float Score)
     {
         highscore += Score;
+        if (highscore <= 0)
+        {
+            highscore = 0;
+        }
     }
 
     private void updateUI()
     {
-        scoreLabel.text = "Score: " + Mathf.Round(highscore).ToString();
-        playerLife.text = playerObject.playerLife.ToString();
-        playerTime.text = Time.deltaTime.ToString();
+        if (playerObject.playerAlive)
+        {
+            scoreLabel.text = "Score: " + Mathf.Round(highscore).ToString();
+            playerLife.text = playerObject.playerLife.ToString();
+            playerTime.text = Time.deltaTime.ToString();
+        }
+       
     }
 
     void SetupWalls()
@@ -131,6 +139,8 @@ public class GameManager : MonoBehaviour
     private void Load()
     {
         string json = loadHighscoreList();
+        EndScene.SetActive(false);
+        ScoreBoard.SetActive(true);
         
         if (json != null)
         {
@@ -159,7 +169,6 @@ public class GameManager : MonoBehaviour
             tempstore.RemoveAt(11);
         }
         string json = JsonUtility.ToJson(tempstore);
-        Debug.Log(json);
         WriteToFile(json);
     }
     

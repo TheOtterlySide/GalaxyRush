@@ -31,30 +31,37 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Input.GetKey("left") || Input.GetKey("right") || Input.GetKey("up") || Input.GetKey("down"))
+        if (playerAlive)
         {
-            playerXPos = Input.GetAxis("Horizontal");
-            playerYPos = Input.GetAxis("Vertical");
-            UpdatePosition(playerXPos, playerYPos);
+            if (Input.GetKey("left") || Input.GetKey("right") || Input.GetKey("up") || Input.GetKey("down"))
+            {
+                playerXPos = Input.GetAxis("Horizontal");
+                playerYPos = Input.GetAxis("Vertical");
+                UpdatePosition(playerXPos, playerYPos);
+            }
         }
+        
     }
 
     private void Update()
     {
-        playerShootTime += Time.deltaTime;
-        if (Input.GetButton("Fire1") && playerShootTime > playerShootCooldown)
+        if (playerAlive)
         {
-            playerShootTime = 0;
-            ShootingBullet();
-        }
-
-        if (playerPowerStatus == true)
-        {
-            playerPowerTime += Time.deltaTime;
-            if (playerPowerTime > playerPowerCooldown)
+            playerShootTime += Time.deltaTime;
+            if (Input.GetButton("Fire1") && playerShootTime > playerShootCooldown)
             {
-                playerPowerTime = 0;
-                OnPowerUp(false);
+                playerShootTime = 0;
+                ShootingBullet();
+            }
+
+            if (playerPowerStatus == true)
+            {
+                playerPowerTime += Time.deltaTime;
+                if (playerPowerTime > playerPowerCooldown)
+                {
+                    playerPowerTime = 0;
+                    OnPowerUp(false);
+                }
             }
         }
     }
@@ -76,7 +83,7 @@ public class Player : MonoBehaviour
 
     void UpdatePosition(float xPos, float yPos)
     {
-            transform.Translate(new Vector3(xPos,yPos) * playerSpeed * Time.deltaTime);
+            transform.Translate(new Vector3(xPos,yPos) * (playerSpeed * Time.deltaTime));
     }
 
     void OnCollisionEnter2D(Collision2D collision) 
