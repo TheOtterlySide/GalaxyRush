@@ -26,7 +26,8 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private float enemyDelay;
 
     private List<GameObject> enemyList = new List<GameObject>();
-
+    public bool gameRunning;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -37,18 +38,17 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (Time.time >= powerUpSpawn)
+        if (gameRunning)
         {
-            powerUpSpawn = Time.time + powerUpDelay;
-            SpawnPowerup();
-        }
-
-        if (Time.time >= enemySpawn)
-        {
-            enemySpawn = Time.time + enemyDelay;
-            if (enemyList.Count == 0)
+            if (Time.time >= powerUpSpawn)
             {
+                powerUpSpawn = Time.time + powerUpDelay;
+                SpawnPowerup();
+            }
+
+            if (Time.time >= enemySpawn)
+            {
+                enemySpawn = Time.time + enemyDelay;
                 SpawnEnemies();
             }
         }

@@ -41,11 +41,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject GO_Highscore2;
     [SerializeField] private GameObject GO_Highscore3;
 
+    [SerializeField] private SpawnManager SpawnManager;
+
     void Start()
     {
         GameRunning = true;
         inputFieldPlayName = GO_inputfield.GetComponent<InputField>();
         SetupWalls();
+        SpawnManager.gameRunning = true;
     }
 
     // Update is called once per frame
@@ -71,7 +74,7 @@ public class GameManager : MonoBehaviour
     {
         if (playerObject.playerAlive == false) 
         {
-            GameRunning = false;
+            SpawnManager.gameRunning = false;
             GameEnd();
         }
     }

@@ -744,7 +744,7 @@ GameObject:
   - component: {fileID: 687599221}
   m_Layer: 0
   m_Name: Right
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -877,7 +877,7 @@ GameObject:
   - component: {fileID: 713740600}
   m_Layer: 0
   m_Name: Left
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1281,6 +1281,7 @@ MonoBehaviour:
   GO_Highscore1: {fileID: 1036182443}
   GO_Highscore2: {fileID: 886062088}
   GO_Highscore3: {fileID: 1949434650}
+  SpawnManager: {fileID: 1592432542}
 --- !u!4 &860387407
 Transform:
   m_ObjectHideFlags: 0
@@ -1927,6 +1928,7 @@ MonoBehaviour:
   powerUpDelay: 5
   enemySpawn: 0
   enemyDelay: 2
+  gameRunning: 0
 --- !u!4 &1592432543
 Transform:
   m_ObjectHideFlags: 0
@@ -1959,7 +1961,7 @@ GameObject:
   - component: {fileID: 1660205777}
   m_Layer: 0
   m_Name: Bottom
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2577,7 +2579,7 @@ GameObject:
   - component: {fileID: 2117677675}
   m_Layer: 0
   m_Name: Top
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
