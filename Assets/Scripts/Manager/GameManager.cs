@@ -27,19 +27,21 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Text playerTime;
 
     [SerializeField] private GameObject EndScene;
-    
-    
-    private HighscoreEntry HGE;
-    private InputField inputFieldPlayName;
     [SerializeField] private GameObject GO_inputfield;
+    [SerializeField] private GameObject GO_inputfieldHeadline;
+    
+    private HighscoreEntry HGE = new HighscoreEntry();
+    private InputField inputFieldPlayName;
+    
     [SerializeField] private GameObject ScoreBoard;
     private string playerName;
-    private List<HighscoreEntry> highScorePlayerList;
+    private List<HighscoreEntry> highScorePlayerList = new List<HighscoreEntry>();
     private string highscoreFile = "data.json";
 
-    [SerializeField] private GameObject GO_Highscore1;
-    [SerializeField] private GameObject GO_Highscore2;
-    [SerializeField] private GameObject GO_Highscore3;
+    [SerializeField] private Text GO_Highscore1;
+    [SerializeField] private Text GO_Highscore2;
+    [SerializeField] private Text GO_Highscore3;
+    private List<Text> TextList = new List<Text>();
 
     [SerializeField] private SpawnManager SpawnManager;
 
@@ -48,6 +50,7 @@ public class GameManager : MonoBehaviour
         GameRunning = true;
         inputFieldPlayName = GO_inputfield.GetComponent<InputField>();
         SetupWalls();
+        fillTextList();
         SpawnManager.gameRunning = true;
     }
 
@@ -68,6 +71,13 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void fillTextList()
+    {
+        TextList.Add(GO_Highscore1);
+        TextList.Add(GO_Highscore2);
+        TextList.Add(GO_Highscore3);
     }
 
     void CheckForPlayer()
@@ -116,9 +126,14 @@ public class GameManager : MonoBehaviour
     public void setInputName()
     {
         playerName = inputFieldPlayName.text;
+        HGE.username = playerName; 
+        HGE.highscore = highscore;
+
         Load();
-        Save();
+        highScorePlayerList.Add(HGE);
         
+        ShowHighscoreTable();
+        Save();
     }
 
     List<HighscoreEntry> sortHighscoreList()
@@ -129,31 +144,26 @@ public class GameManager : MonoBehaviour
 
     void ShowHighscoreTable()
     {
-        var GO_Highscore1T = GO_Highscore1.AddComponent<Text>();
-        var GO_Highscore2T = GO_Highscore1.AddComponent<Text>();
-        var GO_Highscore3T = GO_Highscore1.AddComponent<Text>();
-
-        GO_Highscore1T.text = highScorePlayerList[0].highscore + " " + highScorePlayerList[0].username;
-        GO_Highscore2T.text = highScorePlayerList[1].highscore + " " + highScorePlayerList[1].username;
-        GO_Highscore3T.text = highScorePlayerList[2].highscore + " " + highScorePlayerList[2].username;
+        for (int i = 0; i < highScorePlayerList.Count; i++)
+        {
+            TextList[i].text = highScorePlayerList[i].highscore + " " + highScorePlayerList[i].username;
+        }
 
     }
     
     private void Load()
     {
         string json = loadHighscoreList();
-        EndScene.SetActive(false);
-        ScoreBoard.SetActive(true);
         
         if (json != null)
         {
             highScorePlayerList = JsonUtility.FromJson<List<HighscoreEntry>>(json);
         }
-        else
-        {
-            highScorePlayerList = new List<HighscoreEntry>();
-        }
-  
+
+        EndScene.SetActive(false);
+        GO_inputfield.SetActive(false);
+        GO_inputfieldHeadline.SetActive(false);
+        ScoreBoard.SetActive(true);
     }
 
     void Save()
