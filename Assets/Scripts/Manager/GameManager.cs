@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -169,6 +170,7 @@ public class GameManager : MonoBehaviour
     void Save()
     {
         var tempstore = sortHighscoreList();
+        
         for (int i = 0; i < tempstore.Count; i++)
         {
             if (HGE.highscore > tempstore[i].highscore)
@@ -181,7 +183,9 @@ public class GameManager : MonoBehaviour
         {
             tempstore.RemoveAt(11);
         }
-        string json = JsonUtility.ToJson(tempstore);
+        
+        string json = Newtonsoft.Json.JsonConvert.SerializeObject(tempstore);
+        Debug.Log(json);
         WriteToFile(json);
     }
     
@@ -218,7 +222,7 @@ public class GameManager : MonoBehaviour
         return Application.persistentDataPath + "/" + fileName;
     }
 }
-
+[Serializable]
 public class HighscoreEntry
 {
     public string username { get; set; }
