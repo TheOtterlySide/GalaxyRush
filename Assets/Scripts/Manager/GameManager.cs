@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -105,7 +106,7 @@ public class GameManager : MonoBehaviour
         {
             scoreLabel.text = "Score: " + Mathf.Round(highscore).ToString();
             playerLife.text = playerObject.playerLife.ToString();
-            playerTime.text = Time.time.ToString();
+            playerTime.text = (Mathf.Round(Time.time * 100f) / 100f).ToString();
         }
        
     }
@@ -154,13 +155,8 @@ public class GameManager : MonoBehaviour
     
     private void Load()
     {
-        string json = loadHighscoreList();
-        
-        if (json != null)
-        {
-            highScorePlayerList = JsonUtility.FromJson<List<HighscoreEntry>>(json);
-        }
 
+        loadHighscoreList();
         EndScene.SetActive(false);
         GO_inputfield.SetActive(false);
         GO_inputfieldHeadline.SetActive(false);
@@ -185,25 +181,26 @@ public class GameManager : MonoBehaviour
         }
         
         string json = Newtonsoft.Json.JsonConvert.SerializeObject(tempstore);
-        Debug.Log(json);
         WriteToFile(json);
     }
     
     
-    string loadHighscoreList()
+    void loadHighscoreList()
     {
         string path = GetFilePath(highscoreFile);
         if (File.Exists(path))
         {
-            using (StreamReader reader = new StreamReader(path))
+            using (StreamReader reader = File.OpenText(path))
             {
-                string json = reader.ReadToEnd();
-                return json;
+                JsonSerializer serializer = new JsonSerializer();
+                var temp = (List<HighscoreEntry>)serializer.Deserialize(reader, typeof(List<HighscoreEntry>));
+                Debug.Log(temp);
+      
             }
         }
         else
         {
-            return null;
+            //return null;
         }
     }
     void WriteToFile(string jsonHighscoreList)
