@@ -32,12 +32,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject GO_inputfield;
     [SerializeField] private GameObject GO_inputfieldHeadline;
     
-    private HighscoreEntry HGE = new HighscoreEntry();
+    private HighscoreEntry HGE = new();
     private InputField inputFieldPlayName;
     
     [SerializeField] private GameObject ScoreBoard;
     private string playerName;
-    private List<HighscoreEntry> highScorePlayerList = new List<HighscoreEntry>();
+    private List<HighscoreEntry> highScorePlayerList = new();
     private string highscoreFile = "data.json";
 
     [SerializeField] private Text GO_Highscore1;
@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         CheckForPlayer();
-        updateScore(scorePerSecond * Time.deltaTime);
+        updateScore(scorePerSecond * Time.time);
         updateUI();
     }
     private void Awake()
@@ -129,12 +129,15 @@ public class GameManager : MonoBehaviour
     {
         playerName = inputFieldPlayName.text;
         HGE.username = playerName; 
-        HGE.highscore = highscore;
-
+        HGE.highscore = highscore.ToString("0.");
+        highScorePlayerList = loadHighscoreList();
+        Debug.Log(highScorePlayerList);
+        Debug.Log(highScorePlayerList.Count);
         Load();
-        highScorePlayerList.Add(HGE);
+   
         
         ShowHighscoreTable();
+        highScorePlayerList.Add(HGE);
         Save();
     }
 
@@ -155,8 +158,7 @@ public class GameManager : MonoBehaviour
     
     private void Load()
     {
-
-        loadHighscoreList();
+        
         EndScene.SetActive(false);
         GO_inputfield.SetActive(false);
         GO_inputfieldHeadline.SetActive(false);
@@ -167,13 +169,8 @@ public class GameManager : MonoBehaviour
     {
         var tempstore = sortHighscoreList();
         
-        for (int i = 0; i < tempstore.Count; i++)
-        {
-            if (HGE.highscore > tempstore[i].highscore)
-            {
-                tempstore.Insert(i,HGE);
-            }
-        }
+        tempstore.Add(HGE);
+        tempstore = sortHighscoreList();
 
         if (tempstore.Count > 10)
         {
@@ -185,23 +182,26 @@ public class GameManager : MonoBehaviour
     }
     
     
-    void loadHighscoreList()
+    List<HighscoreEntry> loadHighscoreList()
     {
         string path = GetFilePath(highscoreFile);
+
         if (File.Exists(path))
         {
-            using (StreamReader reader = File.OpenText(path))
+            var tempCheck = isFileEmpty(path);
+            if (tempCheck == false)
             {
-                JsonSerializer serializer = new JsonSerializer();
-                var temp = (List<HighscoreEntry>)serializer.Deserialize(reader, typeof(List<HighscoreEntry>));
-                Debug.Log(temp);
-      
+                using (StreamReader reader = File.OpenText(path))
+                {
+                    JsonSerializer serializer = new JsonSerializer();
+                    var tempStore = (List<HighscoreEntry>)serializer.Deserialize(reader, typeof(List<HighscoreEntry>));
+                    return tempStore;
+                }
             }
-        }
-        else
-        {
-            //return null;
-        }
+
+        }  //Cant Load File
+
+        return new List<HighscoreEntry>();
     }
     void WriteToFile(string jsonHighscoreList)
     {
@@ -213,7 +213,18 @@ public class GameManager : MonoBehaviour
             writer.Write(jsonHighscoreList);
         }
     }
-    
+
+    private bool isFileEmpty(string fileName)
+    {
+        var info = new FileInfo(fileName);
+        
+        if (info.Length == 0)
+        {
+            return true;
+        }
+
+        return false;
+    }
     private string GetFilePath(string fileName)
     {
         return Application.persistentDataPath + "/" + fileName;
@@ -223,5 +234,5 @@ public class GameManager : MonoBehaviour
 public class HighscoreEntry
 {
     public string username { get; set; }
-    public float highscore { get; set; }
+    public string highscore { get; set; }
 }
