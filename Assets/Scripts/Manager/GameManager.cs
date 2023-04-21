@@ -131,25 +131,21 @@ public class GameManager : MonoBehaviour
         HGE.username = playerName; 
         HGE.highscore = highscore.ToString("0.");
         highScorePlayerList = loadHighscoreList();
-        Debug.Log(highScorePlayerList);
-        Debug.Log(highScorePlayerList.Count);
-        Load();
-   
-        
-        ShowHighscoreTable();
         highScorePlayerList.Add(HGE);
+        Load();
         Save();
+        ShowHighscoreTable();
     }
 
     List<HighscoreEntry> sortHighscoreList()
     {
-        highScorePlayerList = highScorePlayerList.OrderBy(o=>o.highscore).ToList();
+        highScorePlayerList = highScorePlayerList.OrderByDescending(o=>o.highscore).ToList();
         return highScorePlayerList;
     }
 
     void ShowHighscoreTable()
     {
-        for (int i = 0; i < highScorePlayerList.Count; i++)
+        for (int i = 0; i < TextList.Count; i++)
         {
             TextList[i].text = highScorePlayerList[i].highscore + " " + highScorePlayerList[i].username;
         }
@@ -168,9 +164,6 @@ public class GameManager : MonoBehaviour
     void Save()
     {
         var tempstore = sortHighscoreList();
-        
-        tempstore.Add(HGE);
-        tempstore = sortHighscoreList();
 
         if (tempstore.Count > 10)
         {
