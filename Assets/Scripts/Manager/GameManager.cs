@@ -123,6 +123,8 @@ public class GameManager : MonoBehaviour
     void GameEnd()
     {
         EndScene.SetActive(true);
+        SpawnManager.DeleteFromGM("Enemy");
+        SpawnManager.DeleteFromGM("PowerUp");
     }
 
     public void setInputName()

@@ -24,8 +24,6 @@ public class SpawnManager : MonoBehaviour
     
     [SerializeField] private float enemySpawn;
     [SerializeField] private float enemyDelay;
-
-    private List<GameObject> enemyList = new List<GameObject>();
     public bool gameRunning;
     
     // Start is called before the first frame update
@@ -74,7 +72,7 @@ public class SpawnManager : MonoBehaviour
             tempAngle = Quaternion.identity;
             tempPos = SpawnPoints[tempCounter].transform.position;
             Instantiate(enemyPrefab, tempPos, tempAngle);
-            enemyList.Add(enemyPrefab);
+            enemyPrefab.SetActive(true);
         }
 
     }
@@ -82,6 +80,15 @@ public class SpawnManager : MonoBehaviour
     void SpawnPowerup()
     {
         Instantiate(powerUpPrefab, SpawnPoints[1].transform.position, Quaternion.identity);
+        powerUpPrefab.SetActive(true);
+    }
+
+    public void DeleteFromGM(string tag)
+    {
+        var gameObjects =  GameObject.FindGameObjectsWithTag (tag);
+ 
+        for(var i = 0 ; i < gameObjects.Length ; i ++)
+            Destroy(gameObjects[i]);
     }
 
 }
