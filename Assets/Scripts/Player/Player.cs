@@ -22,6 +22,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float playerPowerCooldown;
     [SerializeField] private float playerPowerTime;
     
+    
+    [SerializeField] private GameObject spawnPointBullet;
     void Start()
     {
         playerPowerStatus = false;
@@ -101,7 +103,7 @@ public class Player : MonoBehaviour
 
     void ShootingBullet()
     {
-        Instantiate(playerBullet, gameObject.transform.position, Quaternion.identity);
+        Instantiate(playerBullet, spawnPointBullet.transform.position, Quaternion.identity);
     }
 
     void HandleLife()
