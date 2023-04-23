@@ -15,18 +15,31 @@ public class GameManager : MonoBehaviour
     public static float highscore;
     [SerializeField] private int scorePerSecond;
 
+    #region Walls
 
     [SerializeField] private GameObject Wall_Left;
     [SerializeField] private GameObject Wall_Right;
     [SerializeField] private GameObject Wall_Top;
     [SerializeField] private GameObject Wall_Bottom;
+
+    #endregion
+    
     
     [SerializeField] private Camera MainCamera; //be sure to assign this in the inspector to your main camera
     private Vector2 screenBounds;
 
+    #region UI
+
     [SerializeField] private Text scoreLabel;
     [SerializeField] private Text playerLife;
     [SerializeField] private Text playerTime;
+
+    #endregion
+    
+
+    
+
+    #region Highscore
 
     [SerializeField] private GameObject EndScene;
     [SerializeField] private GameObject GO_inputfield;
@@ -44,7 +57,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Text GO_Highscore2;
     [SerializeField] private Text GO_Highscore3;
     private List<Text> TextList = new List<Text>();
+    #endregion
 
+    #region Pause
+
+    [SerializeField] private GameObject PauseMenu;
+
+    #endregion
     [SerializeField] private SpawnManager SpawnManager;
 
     void Start()
@@ -57,12 +76,19 @@ public class GameManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         CheckForPlayer();
         updateScore(scorePerSecond * Time.time);
         updateUI();
+
+
+        if (Input.GetButton("Cancel"))
+        {
+            Pause(true);
+        }
     }
+
     private void Awake()
     {
         if (Instance == null) 
@@ -209,7 +235,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private bool isFileEmpty(string fileName)
+    bool isFileEmpty(string fileName)
     {
         var info = new FileInfo(fileName);
         
@@ -220,9 +246,24 @@ public class GameManager : MonoBehaviour
 
         return false;
     }
-    private string GetFilePath(string fileName)
+    string GetFilePath(string fileName)
     {
         return Application.persistentDataPath + "/" + fileName;
+    }
+
+    public void Pause(bool pauseStatus)
+    {
+        if (pauseStatus == true)
+        {
+            Time.timeScale = 0.0f;
+            PauseMenu.SetActive(true);
+        }
+
+        else
+        {
+            Time.timeScale = 1.0f;
+            PauseMenu.SetActive(false);
+        }
     }
 }
 [Serializable]
