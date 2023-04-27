@@ -24,6 +24,7 @@ public class SpawnManager : MonoBehaviour
     
     [SerializeField] private float enemySpawn;
     [SerializeField] private float enemyDelay;
+    [SerializeField] private float enemyPauseSpawn;
     public bool gameRunning;
     
     // Start is called before the first frame update
@@ -54,7 +55,7 @@ public class SpawnManager : MonoBehaviour
 
     void SetEnemyCounter()
     {
-        EnemyCounter = Random.Range(0, 10);
+        EnemyCounter = Random.Range(2, 10);
         SpawnPoints.Add(SpawnPoint);
         SpawnPoints.Add(SpawnPoint2);
         SpawnPoints.Add(SpawnPoint3);
@@ -71,6 +72,11 @@ public class SpawnManager : MonoBehaviour
             tempCounter = Random.Range(0, 3);
             tempAngle = Quaternion.identity;
             tempPos = SpawnPoints[tempCounter].transform.position;
+            float waitTime = 4;
+            while (enemyPauseSpawn < waitTime)
+            {
+                enemyPauseSpawn += Time.deltaTime;
+            }
             Instantiate(enemyPrefab, tempPos, tempAngle);
             enemyPrefab.SetActive(true);
         }

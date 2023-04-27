@@ -57,6 +57,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Text GO_Highscore2;
     [SerializeField] private Text GO_Highscore3;
     private List<Text> TextList = new List<Text>();
+
+    private float storedTime;
     #endregion
 
     #region Pause
@@ -79,7 +81,6 @@ public class GameManager : MonoBehaviour
     void FixedUpdate()
     {
         CheckForPlayer();
-        updateScore(scorePerSecond * Time.time);
         updateUI();
 
 
@@ -132,7 +133,7 @@ public class GameManager : MonoBehaviour
         {
             scoreLabel.text = "Score: " + Mathf.Round(highscore).ToString();
             playerLife.text = playerObject.playerLife.ToString();
-            playerTime.text = (Mathf.Round(Time.time * 100f) / 100f).ToString();
+            playerTime.text = (Mathf.Round(Time.time * 100f / 100f)).ToString();
         }
        
     }
@@ -148,6 +149,7 @@ public class GameManager : MonoBehaviour
 
     void GameEnd()
     {
+        storedTime = float.Parse(playerTime.text);
         EndScene.SetActive(true);
         SpawnManager.DeleteFromGM("Enemy");
         SpawnManager.DeleteFromGM("PowerUp");
@@ -156,7 +158,8 @@ public class GameManager : MonoBehaviour
     public void setInputName()
     {
         playerName = inputFieldPlayName.text;
-        HGE.username = playerName; 
+        HGE.username = playerName;
+        highscore += scorePerSecond * storedTime;
         HGE.highscore = highscore.ToString("0.");
         highScorePlayerList = loadHighscoreList();
         highScorePlayerList.Add(HGE);
@@ -193,11 +196,6 @@ public class GameManager : MonoBehaviour
     {
         var tempstore = sortHighscoreList();
 
-        if (tempstore.Count > 10)
-        {
-            tempstore.RemoveAt(11);
-        }
-        
         string json = Newtonsoft.Json.JsonConvert.SerializeObject(tempstore);
         WriteToFile(json);
     }
