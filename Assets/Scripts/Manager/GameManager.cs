@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using Newtonsoft.Json;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -67,6 +68,7 @@ public class GameManager : MonoBehaviour
 
     #endregion
     [SerializeField] private SpawnManager SpawnManager;
+    [SerializeField] private GameObject Game;
 
     void Start()
     {
@@ -262,6 +264,13 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 1.0f;
             PauseMenu.SetActive(false);
         }
+    }
+
+    public void MainMenu()
+    {
+        PauseMenu.SetActive(false);
+        Destroy(Game);
+        SceneManager.LoadScene("Main Menu");
     }
 }
 [Serializable]
