@@ -13,17 +13,16 @@ public class Player : MonoBehaviour
     
     public bool playerAlive;
     public int playerLife;
+    public bool gameRunning;
     
     [SerializeField] private bool playerPowerStatus;
-
-    [SerializeField] private Bullet playerBullet;
     [SerializeField] private float playerShootCooldown;
     [SerializeField] private float playerShootTime;
     [SerializeField] private float playerPowerCooldown;
     [SerializeField] private float playerPowerTime;
+
+    [SerializeField] public PlayerControl controls;
     
-    
-    [SerializeField] private GameObject spawnPointBullet;
     void Start()
     {
         playerPowerStatus = false;
@@ -33,13 +32,13 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (playerAlive)
+        if (playerAlive && gameRunning)
         {
             if (Input.GetKey("left") || Input.GetKey("right") || Input.GetKey("up") || Input.GetKey("down"))
             {
                 playerXPos = Input.GetAxis("Horizontal");
                 playerYPos = Input.GetAxis("Vertical");
-                UpdatePosition(playerXPos, playerYPos);
+                controls.UpdatePosition(playerXPos, playerYPos, playerSpeed);
             }
         }
         
@@ -47,16 +46,16 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (playerAlive)
+        if (playerAlive & gameRunning)
         {
             playerShootTime += Time.deltaTime;
             if (Input.GetButton("Fire1") && playerShootTime > playerShootCooldown)
             {
                 playerShootTime = 0;
-                ShootingBullet();
+                controls.ShootingBullet();
             }
 
-            if (playerPowerStatus == true)
+            if (playerPowerStatus)
             {
                 playerPowerTime += Time.deltaTime;
                 if (playerPowerTime > playerPowerCooldown)
@@ -83,10 +82,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    void UpdatePosition(float xPos, float yPos)
-    {
-            transform.Translate(new Vector3(xPos,yPos) * (playerSpeed * Time.deltaTime));
-    }
+
 
     void OnCollisionEnter2D(Collision2D collision) 
     {
@@ -99,11 +95,6 @@ public class Player : MonoBehaviour
         {
             HandleLife();
         }
-    }
-
-    void ShootingBullet()
-    {
-        Instantiate(playerBullet, spawnPointBullet.transform.position, Quaternion.identity);
     }
 
     void HandleLife()

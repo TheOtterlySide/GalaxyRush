@@ -1254,6 +1254,7 @@ GameObject:
   - component: {fileID: 729436584}
   - component: {fileID: 729436583}
   - component: {fileID: 729436585}
+  - component: {fileID: 729436586}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1395,12 +1396,25 @@ MonoBehaviour:
   playerAlive: 0
   playerLife: 3
   playerPowerStatus: 0
-  playerBullet: {fileID: 820938308251028233, guid: 94a29c20b2e9c4d509376a59f592ff75, type: 3}
   playerShootCooldown: 0.2
   playerShootTime: 0
   playerPowerCooldown: 5
   playerPowerTime: 0
+  controls: {fileID: 729436586}
+--- !u!114 &729436586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 729436579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f73f1a6e370634d7d930e3f3446f8212, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   spawnPointBullet: {fileID: 1541805393}
+  playerBullet: {fileID: 820938308251028233, guid: 94a29c20b2e9c4d509376a59f592ff75, type: 3}
 --- !u!1 &736408068
 GameObject:
   m_ObjectHideFlags: 0

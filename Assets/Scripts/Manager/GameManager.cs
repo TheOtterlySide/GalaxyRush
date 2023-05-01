@@ -77,6 +77,7 @@ public class GameManager : MonoBehaviour
         SetupWalls();
         fillTextList();
         SpawnManager.gameRunning = true;
+        playerObject.gameRunning = true;
     }
 
     // Update is called once per frame
@@ -116,6 +117,7 @@ public class GameManager : MonoBehaviour
         if (playerObject.playerAlive == false) 
         {
             SpawnManager.gameRunning = false;
+            playerObject.gameRunning = false;
             GameEnd();
         }
     }
@@ -257,12 +259,14 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 0.0f;
             PauseMenu.SetActive(true);
+            playerObject.gameRunning = false;
         }
 
         else
         {
             Time.timeScale = 1.0f;
             PauseMenu.SetActive(false);
+            playerObject.gameRunning = true;
         }
     }
 
