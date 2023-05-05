@@ -9,6 +9,9 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private GameObject SpawnPoint;
     [SerializeField] private GameObject SpawnPoint2;
     [SerializeField] private GameObject SpawnPoint3;
+    [SerializeField] private GameObject SpawnArea_L;
+    [SerializeField] private GameObject SpawnArea_R;
+    
     private List<GameObject> SpawnPoints = new List<GameObject>();
 
     private Transform sp1;
@@ -30,7 +33,7 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SetEnemyCounter();
+        SetupSpawnArea();
         SpawnEnemies();
     }
 
@@ -53,6 +56,12 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
+    void SetupSpawnArea()
+    {
+        Vector3 stageDimensions = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, Camera.main.nearClipPlane));
+        SpawnArea_L.transform.position = new Vector3(-stageDimensions.x - 0.5f, stageDimensions.y + 0.5f, 0);
+        SpawnArea_R.transform.position = new Vector3(stageDimensions.x + 0.5f, stageDimensions.y + 0.5f,0);
+    }
     void SetEnemyCounter()
     {
         EnemyCounter = Random.Range(2, 10);
@@ -67,11 +76,15 @@ public class SpawnManager : MonoBehaviour
         Quaternion tempAngle;
         Vector3 tempPos;
         
+        EnemyCounter = Random.Range(2, 10);
+        
         for (int i = 0; i < EnemyCounter; i++)
         {
             tempCounter = Random.Range(0, 3);
             tempAngle = Quaternion.identity;
-            tempPos = SpawnPoints[tempCounter].transform.position;
+            tempPos.x = Random.Range(SpawnArea_L.transform.position.x, SpawnArea_R.transform.position.x);
+            tempPos.y = SpawnArea_L.transform.position.y;
+            tempPos.z = SpawnArea_L.transform.position.z;
             float waitTime = 4;
             while (enemyPauseSpawn < waitTime)
             {
@@ -85,7 +98,11 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnPowerup()
     {
-        Instantiate(powerUpPrefab, SpawnPoints[1].transform.position, Quaternion.identity);
+        Vector3 tempPos;
+        tempPos.x = Random.Range(SpawnArea_L.transform.position.x, SpawnArea_R.transform.position.x);
+        tempPos.y = SpawnArea_L.transform.position.y;
+        tempPos.z = SpawnArea_L.transform.position.z;
+        Instantiate(powerUpPrefab, tempPos, Quaternion.identity);
         powerUpPrefab.SetActive(true);
     }
 

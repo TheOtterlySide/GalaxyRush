@@ -33,6 +33,11 @@ public class Bullet : MonoBehaviour
             DestroySelf();
         }
         
+        if (other.transform.CompareTag("Wall"))
+        {
+            DestroySelf();
+        }
+        
     }
 
 }
