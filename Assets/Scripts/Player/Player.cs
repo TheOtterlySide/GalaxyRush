@@ -99,7 +99,7 @@ public class Player : MonoBehaviour
 
     void HandleLife()
     {
-        if (playerLife != 0)
+        if (playerLife != 1)
         {
             playerLife--;
         }

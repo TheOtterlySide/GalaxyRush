@@ -34,7 +34,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Text scoreLabel;
     [SerializeField] private Text playerLife;
     [SerializeField] private Text playerTime;
+    
+    [SerializeField] private GameObject playerLife1;
+    [SerializeField] private GameObject playerLife2;
+    [SerializeField] private GameObject playerLife3;
 
+    private SpriteRenderer playerLife_1;
+    private SpriteRenderer playerLife_2;
+    private SpriteRenderer playerLife_3;
     #endregion
     
 
@@ -74,6 +81,9 @@ public class GameManager : MonoBehaviour
     {
         GameRunning = true;
         inputFieldPlayName = GO_inputfield.GetComponent<InputField>();
+        playerLife_1 = playerLife1.GetComponent<SpriteRenderer>();
+        playerLife_2 = playerLife2.GetComponent<SpriteRenderer>();
+        playerLife_3 = playerLife3.GetComponent<SpriteRenderer>();
         SetupWalls();
         fillTextList();
         SpawnManager.gameRunning = true;
@@ -136,12 +146,40 @@ public class GameManager : MonoBehaviour
         if (playerObject.playerAlive)
         {
             scoreLabel.text = "Score: " + Mathf.Round(highscore).ToString();
-            playerLife.text = playerObject.playerLife.ToString();
+            updateLife();
             playerTime.text = (Mathf.Round(Time.time * 100f / 100f)).ToString();
         }
-       
+
     }
 
+    void updateLife()
+    {
+        switch (playerObject.playerLife)
+        {
+            case 0:
+                playerLife_1.color = Color.red;
+                playerLife_2.color = Color.red;
+                playerLife_3.color = Color.red;
+                break;
+            case 1:
+                playerLife_1.color = Color.green;
+                playerLife_2.color = Color.red;
+                playerLife_3.color = Color.red;
+                break;
+            case 2:
+                playerLife_1.color = Color.green;
+                playerLife_2.color = Color.green;
+                playerLife_3.color = Color.red;
+                break;
+            case 3:
+                playerLife_1.color = Color.green;
+                playerLife_2.color = Color.green;
+                playerLife_3.color = Color.green;
+                break;
+            default:
+                break;
+        }
+    }
     void SetupWalls()
     {
         Vector3 stageDimensions = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, Camera.main.nearClipPlane));
@@ -154,6 +192,7 @@ public class GameManager : MonoBehaviour
     void GameEnd()
     {
         storedTime = float.Parse(playerTime.text);
+        updateLife();
         EndScene.SetActive(true);
         SpawnManager.DeleteFromGM("Enemy");
         SpawnManager.DeleteFromGM("PowerUp");
