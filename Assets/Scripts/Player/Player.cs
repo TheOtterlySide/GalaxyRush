@@ -109,4 +109,9 @@ public class Player : MonoBehaviour
             playerAlive = false;
         }
     }
+
+    public void SelfDestroy()
+    {
+        gameObject.SetActive(false);
+    }
 }

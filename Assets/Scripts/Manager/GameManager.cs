@@ -128,6 +128,7 @@ public class GameManager : MonoBehaviour
         {
             SpawnManager.gameRunning = false;
             playerObject.gameRunning = false;
+           
             GameEnd();
         }
     }
@@ -194,6 +195,9 @@ public class GameManager : MonoBehaviour
         storedTime = float.Parse(playerTime.text);
         updateLife();
         EndScene.SetActive(true);
+        inputFieldPlayName.ActivateInputField();
+        inputFieldPlayName.Select();
+        playerObject.SelfDestroy();
         SpawnManager.DeleteFromGM("Enemy");
         SpawnManager.DeleteFromGM("PowerUp");
     }
