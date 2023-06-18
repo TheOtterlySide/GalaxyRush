@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PowerUp : MonoBehaviour
@@ -29,8 +30,7 @@ public class PowerUp : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log(other);
-        if (other.gameObject.name == "Player")
+        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Wall"))
         {
             DestroySelf();    
         }
