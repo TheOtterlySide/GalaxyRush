@@ -13,14 +13,15 @@ public class Player : MonoBehaviour
     
     public bool playerAlive;
     public int playerLife;
+    public bool gameRunning;
     
     [SerializeField] private bool playerPowerStatus;
-
-    [SerializeField] private Bullet playerBullet;
     [SerializeField] private float playerShootCooldown;
     [SerializeField] private float playerShootTime;
     [SerializeField] private float playerPowerCooldown;
     [SerializeField] private float playerPowerTime;
+
+    [SerializeField] public PlayerControl controls;
     
     void Start()
     {
@@ -31,30 +32,37 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Input.GetKey("left") || Input.GetKey("right") || Input.GetKey("up") || Input.GetKey("down"))
+        if (playerAlive && gameRunning)
         {
-            playerXPos = Input.GetAxis("Horizontal");
-            playerYPos = Input.GetAxis("Vertical");
-            UpdatePosition(playerXPos, playerYPos);
+            if (Input.GetKey("left") || Input.GetKey("right") || Input.GetKey("up") || Input.GetKey("down"))
+            {
+                playerXPos = Input.GetAxis("Horizontal");
+                playerYPos = Input.GetAxis("Vertical");
+                controls.UpdatePosition(playerXPos, playerYPos, playerSpeed);
+            }
         }
+        
     }
 
     private void Update()
     {
-        playerShootTime += Time.deltaTime;
-        if (Input.GetButton("Fire1") && playerShootTime > playerShootCooldown)
+        if (playerAlive & gameRunning)
         {
-            playerShootTime = 0;
-            ShootingBullet();
-        }
-
-        if (playerPowerStatus == true)
-        {
-            playerPowerTime += Time.deltaTime;
-            if (playerPowerTime > playerPowerCooldown)
+            playerShootTime += Time.deltaTime;
+            if (Input.GetButton("Fire1") && playerShootTime > playerShootCooldown)
             {
-                playerPowerTime = 0;
-                OnPowerUp(false);
+                playerShootTime = 0;
+                controls.ShootingBullet();
+            }
+
+            if (playerPowerStatus)
+            {
+                playerPowerTime += Time.deltaTime;
+                if (playerPowerTime > playerPowerCooldown)
+                {
+                    playerPowerTime = 0;
+                    OnPowerUp(false);
+                }
             }
         }
     }
@@ -74,32 +82,24 @@ public class Player : MonoBehaviour
         }
     }
 
-    void UpdatePosition(float xPos, float yPos)
-    {
-            transform.Translate(new Vector3(xPos,yPos) * playerSpeed * Time.deltaTime);
-    }
+
 
     void OnCollisionEnter2D(Collision2D collision) 
     {
-        if (collision.gameObject.tag == "PowerUp")
+        if (collision.gameObject.CompareTag("PowerUp"))
         {
             OnPowerUp(true);
         }
 
-        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "BulletEnemy")
+        if (collision.gameObject.tag is "Enemy" or "BulletEnemy")
         {
             HandleLife();
         }
     }
 
-    void ShootingBullet()
-    {
-        Instantiate(playerBullet, gameObject.transform.position, Quaternion.identity);
-    }
-
     void HandleLife()
     {
-        if (playerLife != 0)
+        if (playerLife != 1)
         {
             playerLife--;
         }
@@ -108,5 +108,10 @@ public class Player : MonoBehaviour
             playerLife = 0;
             playerAlive = false;
         }
+    }
+
+    public void SelfDestroy()
+    {
+        gameObject.SetActive(false);
     }
 }

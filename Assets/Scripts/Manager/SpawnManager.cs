@@ -9,6 +9,9 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private GameObject SpawnPoint;
     [SerializeField] private GameObject SpawnPoint2;
     [SerializeField] private GameObject SpawnPoint3;
+    [SerializeField] private GameObject SpawnArea_L;
+    [SerializeField] private GameObject SpawnArea_R;
+    
     private List<GameObject> SpawnPoints = new List<GameObject>();
 
     private Transform sp1;
@@ -19,30 +22,49 @@ public class SpawnManager : MonoBehaviour
 
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private GameObject powerUpPrefab;
-    [SerializeField] private float powerUpCooldown;
-    [SerializeField] private float powerUpActve;
-
+    [SerializeField] private float powerUpSpawn;
+    [SerializeField] private float powerUpDelay;
+    
+    [SerializeField] private float enemySpawn;
+    [SerializeField] private float enemyDelay;
+    [SerializeField] private float enemyPauseSpawn;
+    public bool gameRunning;
+    
     // Start is called before the first frame update
     void Start()
     {
-        SetEnemyCounter();
+        SetupSpawnArea();
         SpawnEnemies();
     }
 
     // Update is called once per frame
     void Update()
     {
-        powerUpCooldown += Time.deltaTime;
-        if (powerUpCooldown > powerUpActve)
+        if (gameRunning)
         {
-            powerUpCooldown = 0;
-            SpawnPowerup();
+            if (Time.time >= powerUpSpawn)
+            {
+                powerUpSpawn = Time.time + powerUpDelay;
+                SpawnPowerup();
+            }
+
+            if (Time.time >= enemySpawn)
+            {
+                enemySpawn = Time.time + enemyDelay;
+                SpawnEnemies();
+            }
         }
     }
 
+    void SetupSpawnArea()
+    {
+        Vector3 stageDimensions = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, Camera.main.nearClipPlane));
+        SpawnArea_L.transform.position = new Vector3(-stageDimensions.x - 0.5f, stageDimensions.y + 0.5f, 0);
+        SpawnArea_R.transform.position = new Vector3(stageDimensions.x + 0.5f, stageDimensions.y + 0.5f,0);
+    }
     void SetEnemyCounter()
     {
-        EnemyCounter = Random.Range(1, 10);
+        EnemyCounter = Random.Range(2, 10);
         SpawnPoints.Add(SpawnPoint);
         SpawnPoints.Add(SpawnPoint2);
         SpawnPoints.Add(SpawnPoint3);
@@ -54,19 +76,42 @@ public class SpawnManager : MonoBehaviour
         Quaternion tempAngle;
         Vector3 tempPos;
         
+        EnemyCounter = Random.Range(2, 10);
+        
         for (int i = 0; i < EnemyCounter; i++)
         {
-            tempCounter = Random.Range(1, 3);
+            tempCounter = Random.Range(0, 3);
             tempAngle = Quaternion.identity;
-            tempPos = SpawnPoints[tempCounter].transform.position;
+            tempPos.x = Random.Range(SpawnArea_L.transform.position.x, SpawnArea_R.transform.position.x);
+            tempPos.y = SpawnArea_L.transform.position.y;
+            tempPos.z = SpawnArea_L.transform.position.z;
+            float waitTime = 4;
+            while (enemyPauseSpawn < waitTime)
+            {
+                enemyPauseSpawn += Time.deltaTime;
+            }
             Instantiate(enemyPrefab, tempPos, tempAngle);
+            enemyPrefab.SetActive(true);
         }
 
     }
 
     void SpawnPowerup()
     {
-        Instantiate(powerUpPrefab, SpawnPoints[1].transform.position, Quaternion.identity);
+        Vector3 tempPos;
+        tempPos.x = Random.Range(SpawnArea_L.transform.position.x, SpawnArea_R.transform.position.x);
+        tempPos.y = SpawnArea_L.transform.position.y;
+        tempPos.z = SpawnArea_L.transform.position.z;
+        Instantiate(powerUpPrefab, tempPos, Quaternion.identity);
+        powerUpPrefab.SetActive(true);
+    }
+
+    public void DeleteFromGM(string tag)
+    {
+        var gameObjects =  GameObject.FindGameObjectsWithTag (tag);
+ 
+        for(var i = 0 ; i < gameObjects.Length ; i ++)
+            Destroy(gameObjects[i]);
     }
 
 }
