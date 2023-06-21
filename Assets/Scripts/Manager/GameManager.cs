@@ -18,10 +18,10 @@ public class GameManager : MonoBehaviour
 
     #region Walls
 
-    [SerializeField] private GameObject Wall_Left;
-    [SerializeField] private GameObject Wall_Right;
-    [SerializeField] private GameObject Wall_Top;
-    [SerializeField] private GameObject Wall_Bottom;
+        [SerializeField] private GameObject Wall_Left;
+        [SerializeField] private GameObject Wall_Right;
+        [SerializeField] private GameObject Wall_Top;
+        [SerializeField] private GameObject Wall_Bottom;
 
     #endregion
     
@@ -31,17 +31,17 @@ public class GameManager : MonoBehaviour
 
     #region UI
 
-    [SerializeField] private Text scoreLabel;
-    [SerializeField] private Text playerLife;
-    [SerializeField] private Text playerTime;
-    
-    [SerializeField] private GameObject playerLife1;
-    [SerializeField] private GameObject playerLife2;
-    [SerializeField] private GameObject playerLife3;
+        [SerializeField] private Text scoreLabel;
+        [SerializeField] private Text playerLife;
+        [SerializeField] private Text playerTime;
+        
+        [SerializeField] private GameObject playerLife1;
+        [SerializeField] private GameObject playerLife2;
+        [SerializeField] private GameObject playerLife3;
 
-    private SpriteRenderer playerLife_1;
-    private SpriteRenderer playerLife_2;
-    private SpriteRenderer playerLife_3;
+        private SpriteRenderer playerLife_1;
+        private SpriteRenderer playerLife_2;
+        private SpriteRenderer playerLife_3;
     #endregion
     
 
@@ -49,24 +49,24 @@ public class GameManager : MonoBehaviour
 
     #region Highscore
 
-    [SerializeField] private GameObject EndScene;
-    [SerializeField] private GameObject GO_inputfield;
-    [SerializeField] private GameObject GO_inputfieldHeadline;
-    
-    private HighscoreEntry HGE = new();
-    private InputField inputFieldPlayName;
-    
-    [SerializeField] private GameObject ScoreBoard;
-    private string playerName;
-    private List<HighscoreEntry> highScorePlayerList = new();
-    private string highscoreFile = "data.json";
+        [SerializeField] private GameObject EndScene;
+        [SerializeField] private GameObject GO_inputfield;
+        [SerializeField] private GameObject GO_inputfieldHeadline;
+        
+        private HighscoreEntry HGE = new();
+        private InputField inputFieldPlayName;
+        
+        [SerializeField] private GameObject ScoreBoard;
+        private string playerName;
+        private List<HighscoreEntry> highScorePlayerList = new();
+        private string highscoreFile = "data.json";
 
-    [SerializeField] private Text GO_Highscore1;
-    [SerializeField] private Text GO_Highscore2;
-    [SerializeField] private Text GO_Highscore3;
-    private List<Text> TextList = new List<Text>();
+        [SerializeField] private Text GO_Highscore1;
+        [SerializeField] private Text GO_Highscore2;
+        [SerializeField] private Text GO_Highscore3;
+        private List<Text> TextList = new List<Text>();
 
-    private float storedTime;
+        private float storedTime;
     #endregion
 
     #region Pause
@@ -148,7 +148,7 @@ public class GameManager : MonoBehaviour
         {
             scoreLabel.text = "Score: " + Mathf.Round(highscore).ToString();
             updateLife();
-            playerTime.text = (Mathf.Round(Time.time * 100f / 100f)).ToString();
+            playerTime.text = "Time: " + (Mathf.Round(Time.time * 100f / 100f)).ToString();
         }
 
     }
@@ -192,7 +192,8 @@ public class GameManager : MonoBehaviour
 
     void GameEnd()
     {
-        storedTime = float.Parse(playerTime.text);
+        storedTime = float.Parse(playerTime.text.Replace("Time: ", ""));
+        playerObject.playerLife = 0;
         updateLife();
         EndScene.SetActive(true);
         inputFieldPlayName.ActivateInputField();
