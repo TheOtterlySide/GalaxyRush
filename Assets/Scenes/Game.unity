@@ -2834,7 +2834,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1541805393}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.4, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2878,9 +2878,9 @@ MonoBehaviour:
   enemyPrefab: {fileID: 7273635592917694482, guid: 16bcc8817ce5c4ea2a4f4ea4196f303e, type: 3}
   powerUpPrefab: {fileID: 7273635592917694482, guid: a903d97202db248b9af0cbbf6fadbc5d, type: 3}
   powerUpSpawn: 10
-  powerUpDelay: 0
-  enemySpawn: 5
-  enemyDelay: 0
+  powerUpDelay: 5
+  enemySpawn: 8
+  enemyDelay: 3
   enemyPauseSpawn: 4
   gameRunning: 0
 --- !u!4 &1592432543

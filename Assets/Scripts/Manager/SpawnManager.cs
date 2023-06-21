@@ -86,10 +86,12 @@ public class SpawnManager : MonoBehaviour
             tempPos.y = SpawnArea_L.transform.position.y;
             tempPos.z = SpawnArea_L.transform.position.z;
             float waitTime = 4;
+            
             while (enemyPauseSpawn < waitTime)
             {
                 enemyPauseSpawn += Time.deltaTime;
             }
+            
             Instantiate(enemyPrefab, tempPos, tempAngle);
             enemyPrefab.SetActive(true);
         }

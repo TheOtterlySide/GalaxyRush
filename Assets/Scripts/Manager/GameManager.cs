@@ -187,7 +187,7 @@ public class GameManager : MonoBehaviour
         Wall_Left.transform.position = new Vector3(-stageDimensions.x - 0.5f, 0, 0);
         Wall_Right.transform.position = new Vector3(stageDimensions.x + 0.5f, 0,0);
         Wall_Top.transform.position = new Vector3(0,stageDimensions.y + 0.5f,0);
-        Wall_Bottom.transform.position = new Vector3(0, -stageDimensions.y - 0.5f, 0);
+        Wall_Bottom.transform.position = new Vector3(0, -stageDimensions.y - 2f, 0);
     }
 
     void GameEnd()
@@ -228,7 +228,6 @@ public class GameManager : MonoBehaviour
         {
             TextList[i].text = highScorePlayerList[i].highscore + " " + highScorePlayerList[i].username;
         }
-
     }
     
     private void Load()
