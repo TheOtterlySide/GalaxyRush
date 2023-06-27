@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
         [SerializeField] private GameObject Wall_Right;
         [SerializeField] private GameObject Wall_Top;
         [SerializeField] private GameObject Wall_Bottom;
+        [SerializeField] private GameObject Wall_Bottom_Player;
 
     #endregion
     
@@ -188,6 +189,8 @@ public class GameManager : MonoBehaviour
         Wall_Right.transform.position = new Vector3(stageDimensions.x + 0.5f, 0,0);
         Wall_Top.transform.position = new Vector3(0,stageDimensions.y + 0.5f,0);
         Wall_Bottom.transform.position = new Vector3(0, -stageDimensions.y - 2f, 0);
+        Wall_Bottom_Player.transform.position = new Vector3(0, -stageDimensions.y - 1f, 0);
+        
     }
 
     void GameEnd()
