@@ -73,6 +73,7 @@ public class GameManager : MonoBehaviour
     #region Pause
 
     [SerializeField] private GameObject PauseMenu;
+    [SerializeField] private AudioManager audioManager;
 
     #endregion
     [SerializeField] private SpawnManager SpawnManager;
@@ -89,6 +90,7 @@ public class GameManager : MonoBehaviour
         fillTextList();
         SpawnManager.gameRunning = true;
         playerObject.gameRunning = true;
+        audioManager.Start();
     }
 
     // Update is called once per frame
@@ -204,6 +206,7 @@ public class GameManager : MonoBehaviour
         playerObject.SelfDestroy();
         SpawnManager.DeleteFromGM("Enemy");
         SpawnManager.DeleteFromGM("PowerUp");
+        audioManager.Stop();
     }
 
     public void setInputName()
@@ -306,6 +309,7 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0.0f;
             PauseMenu.SetActive(true);
             playerObject.gameRunning = false;
+            audioManager.Pause();
         }
 
         else
@@ -313,6 +317,7 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 1.0f;
             PauseMenu.SetActive(false);
             playerObject.gameRunning = true;
+            audioManager.Resume();
         }
     }
 

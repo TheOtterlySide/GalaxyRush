@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{B9F3B301-5429-40FD-BF8E-D3940179E4FB}" SchemaVersion="110">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{B9F3B301-5429-40FD-BF8E-D3940179E4FB}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="BGM_START" ID="{C7453940-E819-414A-9907-8390C03397F5}">
+					<ChildrenList>
+						<Action Name="" ID="{8714AD89-DD88-4BB5-B5E8-212E3633D8B5}" ShortID="472947923">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Playlist" ID="{D54C6CE3-CFB6-493D-A4CC-328DCF5F89D8}" WorkUnitID="{9F0B7A92-4AD0-463D-B38B-771857A1F792}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="BGM_PAUSE" ID="{9E5F942E-FCE1-43AA-B5F1-EDF5E3F89E09}">
+					<ChildrenList>
+						<Action Name="" ID="{E6186C6D-9DAC-498E-9352-A88DD088CE43}" ShortID="980225761">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="7"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Playlist" ID="{D54C6CE3-CFB6-493D-A4CC-328DCF5F89D8}" WorkUnitID="{9F0B7A92-4AD0-463D-B38B-771857A1F792}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="BGM_STOP" ID="{5F8BC36B-2B74-48D4-8F6A-3F5BFF9872A8}">
+					<ChildrenList>
+						<Action Name="" ID="{02A9F12A-B76B-4370-9335-BC84E3687716}" ShortID="943047538">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Playlist" ID="{D54C6CE3-CFB6-493D-A4CC-328DCF5F89D8}" WorkUnitID="{9F0B7A92-4AD0-463D-B38B-771857A1F792}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="BGM_RESUME" ID="{B561F279-6F3C-442D-B4A5-40655326CBDB}">
+					<ChildrenList>
+						<Action Name="" ID="{D67495D0-DECC-46E6-92B8-E66718A11130}" ShortID="957702217">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="9"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Playlist" ID="{D54C6CE3-CFB6-493D-A4CC-328DCF5F89D8}" WorkUnitID="{9F0B7A92-4AD0-463D-B38B-771857A1F792}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

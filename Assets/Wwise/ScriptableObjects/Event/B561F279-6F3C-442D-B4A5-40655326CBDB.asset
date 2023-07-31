@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e654bc7e39c04271ad7c4d6e0a0a8ed, type: 3}
+  m_Name: B561F279-6F3C-442D-B4A5-40655326CBDB
+  m_EditorClassIdentifier: 
+  objectName: BGM_RESUME
+  id: 4222990873
+  guid: B561F279-6F3C-442D-B4A5-40655326CBDB
