@@ -33,6 +33,13 @@
 							</ReferenceList>
 							<ChildrenList>
 								<MusicTrack Name="fsm-team-escp-paradox" ID="{763A4448-A2AF-4BFD-AD73-04516ABEB347}" ShortID="570001432">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-5</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="OutputBus">
 											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D5FDB601-B713-4094-8BBF-F20B435264B9}"/>
