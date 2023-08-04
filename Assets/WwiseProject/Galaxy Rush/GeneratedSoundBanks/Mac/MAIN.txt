@@ -1,9 +1,0 @@
-Event	ID	Name			Wwise Object Path	Notes
-	2090192256	BGM_STOP			\Default Work Unit\BGM_STOP	
-	2116526750	BGM_PAUSE			\Default Work Unit\BGM_PAUSE	
-	2985635692	BGM_START			\Default Work Unit\BGM_START	
-	4222990873	BGM_RESUME			\Default Work Unit\BGM_RESUME	
-
-In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	252231041	fsm-team-escp-paradox	Y:\Developing\GAMEDEV\GalaxyRush\Assets\WwiseProject\Galaxy Rush\.cache\Mac\SFX\fsm-team-escp-paradox_9EDFC787.wem		\Interactive Music Hierarchy\Default Work Unit\Playlist\Song\fsm-team-escp-paradox		3925849
-
