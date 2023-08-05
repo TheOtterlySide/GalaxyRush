@@ -82,8 +82,8 @@ WwiseProject/*_WwiseProject.*.validationcache
 WwiseProject/*_WwiseProject.*.wsettings
 WwiseProject/**/*.akd
 
-Assets/Wwise/Editor/ProjectData/AkWwiseProjectData.asset*
 
+Assets/Wwise/Editor/ProjectData/AkWwiseProjectData.asset*
 
 # Mac stuff
 .DS_store

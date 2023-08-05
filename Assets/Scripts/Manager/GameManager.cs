@@ -18,10 +18,11 @@ public class GameManager : MonoBehaviour
 
     #region Walls
 
-    [SerializeField] private GameObject Wall_Left;
-    [SerializeField] private GameObject Wall_Right;
-    [SerializeField] private GameObject Wall_Top;
-    [SerializeField] private GameObject Wall_Bottom;
+        [SerializeField] private GameObject Wall_Left;
+        [SerializeField] private GameObject Wall_Right;
+        [SerializeField] private GameObject Wall_Top;
+        [SerializeField] private GameObject Wall_Bottom;
+        [SerializeField] private GameObject Wall_Bottom_Player;
 
     #endregion
     
@@ -31,17 +32,17 @@ public class GameManager : MonoBehaviour
 
     #region UI
 
-    [SerializeField] private Text scoreLabel;
-    [SerializeField] private Text playerLife;
-    [SerializeField] private Text playerTime;
-    
-    [SerializeField] private GameObject playerLife1;
-    [SerializeField] private GameObject playerLife2;
-    [SerializeField] private GameObject playerLife3;
+        [SerializeField] private Text scoreLabel;
+        [SerializeField] private Text playerLife;
+        [SerializeField] private Text playerTime;
+        
+        [SerializeField] private GameObject playerLife1;
+        [SerializeField] private GameObject playerLife2;
+        [SerializeField] private GameObject playerLife3;
 
-    private SpriteRenderer playerLife_1;
-    private SpriteRenderer playerLife_2;
-    private SpriteRenderer playerLife_3;
+        private SpriteRenderer playerLife_1;
+        private SpriteRenderer playerLife_2;
+        private SpriteRenderer playerLife_3;
     #endregion
     
 
@@ -49,29 +50,30 @@ public class GameManager : MonoBehaviour
 
     #region Highscore
 
-    [SerializeField] private GameObject EndScene;
-    [SerializeField] private GameObject GO_inputfield;
-    [SerializeField] private GameObject GO_inputfieldHeadline;
-    
-    private HighscoreEntry HGE = new();
-    private InputField inputFieldPlayName;
-    
-    [SerializeField] private GameObject ScoreBoard;
-    private string playerName;
-    private List<HighscoreEntry> highScorePlayerList = new();
-    private string highscoreFile = "data.json";
+        [SerializeField] private GameObject EndScene;
+        [SerializeField] private GameObject GO_inputfield;
+        [SerializeField] private GameObject GO_inputfieldHeadline;
+        
+        private HighscoreEntry HGE = new();
+        private InputField inputFieldPlayName;
+        
+        [SerializeField] private GameObject ScoreBoard;
+        private string playerName;
+        private List<HighscoreEntry> highScorePlayerList = new();
+        private string highscoreFile = "data.json";
 
-    [SerializeField] private Text GO_Highscore1;
-    [SerializeField] private Text GO_Highscore2;
-    [SerializeField] private Text GO_Highscore3;
-    private List<Text> TextList = new List<Text>();
+        [SerializeField] private Text GO_Highscore1;
+        [SerializeField] private Text GO_Highscore2;
+        [SerializeField] private Text GO_Highscore3;
+        private List<Text> TextList = new List<Text>();
 
-    private float storedTime;
+        private float storedTime;
     #endregion
 
     #region Pause
 
     [SerializeField] private GameObject PauseMenu;
+    [SerializeField] private AudioManager audioManager;
 
     #endregion
     [SerializeField] private SpawnManager SpawnManager;
@@ -88,6 +90,7 @@ public class GameManager : MonoBehaviour
         fillTextList();
         SpawnManager.gameRunning = true;
         playerObject.gameRunning = true;
+        audioManager.Start();
     }
 
     // Update is called once per frame
@@ -148,7 +151,7 @@ public class GameManager : MonoBehaviour
         {
             scoreLabel.text = "Score: " + Mathf.Round(highscore).ToString();
             updateLife();
-            playerTime.text = (Mathf.Round(Time.time * 100f / 100f)).ToString();
+            playerTime.text = "Time: " + (Mathf.Round(Time.time * 100f / 100f)).ToString();
         }
 
     }
@@ -187,12 +190,15 @@ public class GameManager : MonoBehaviour
         Wall_Left.transform.position = new Vector3(-stageDimensions.x - 0.5f, 0, 0);
         Wall_Right.transform.position = new Vector3(stageDimensions.x + 0.5f, 0,0);
         Wall_Top.transform.position = new Vector3(0,stageDimensions.y + 0.5f,0);
-        Wall_Bottom.transform.position = new Vector3(0, -stageDimensions.y - 0.5f, 0);
+        Wall_Bottom.transform.position = new Vector3(0, -stageDimensions.y - 2f, 0);
+        Wall_Bottom_Player.transform.position = new Vector3(0, -stageDimensions.y - 1f, 0);
+        
     }
 
     void GameEnd()
     {
-        storedTime = float.Parse(playerTime.text);
+        storedTime = float.Parse(playerTime.text.Replace("Time: ", ""));
+        playerObject.playerLife = 0;
         updateLife();
         EndScene.SetActive(true);
         inputFieldPlayName.ActivateInputField();
@@ -200,6 +206,7 @@ public class GameManager : MonoBehaviour
         playerObject.SelfDestroy();
         SpawnManager.DeleteFromGM("Enemy");
         SpawnManager.DeleteFromGM("PowerUp");
+        audioManager.Stop();
     }
 
     public void setInputName()
@@ -227,7 +234,6 @@ public class GameManager : MonoBehaviour
         {
             TextList[i].text = highScorePlayerList[i].highscore + " " + highScorePlayerList[i].username;
         }
-
     }
     
     private void Load()
@@ -303,6 +309,7 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0.0f;
             PauseMenu.SetActive(true);
             playerObject.gameRunning = false;
+            audioManager.Pause();
         }
 
         else
@@ -310,6 +317,7 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 1.0f;
             PauseMenu.SetActive(false);
             playerObject.gameRunning = true;
+            audioManager.Resume();
         }
     }
 
