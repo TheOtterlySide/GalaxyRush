@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{771C3FCC-9C91-4144-B46F-4AFE4D39E066}" SchemaVersion="110">
+	<SoundBanks>
+		<WorkUnit Name="Default Work Unit" ID="{771C3FCC-9C91-4144-B46F-4AFE4D39E066}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="MAIN" ID="{F3C41902-BCB6-4A73-A633-2D2598FBA099}">
+					<ObjectInclusionList>
+						<ObjectRef Name="BGM_Play" ID="{C48E0417-D971-412E-BF8B-D621296A9BB6}" WorkUnitID="{B4093E93-E30E-4DA1-9FB3-12648466737E}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="BGM_Pause" ID="{E17ED302-0AA3-423F-BCA7-F581D0FB8E2A}" WorkUnitID="{B4093E93-E30E-4DA1-9FB3-12648466737E}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="BGM_Resume" ID="{DA68019C-C62D-46BB-80E3-2D0002D3720C}" WorkUnitID="{B4093E93-E30E-4DA1-9FB3-12648466737E}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="BGM_Stop" ID="{95D460B7-991E-46D1-BECF-41C5738F472E}" WorkUnitID="{B4093E93-E30E-4DA1-9FB3-12648466737E}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundBanks>
+</WwiseDocument>

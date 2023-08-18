@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{B4093E93-E30E-4DA1-9FB3-12648466737E}" SchemaVersion="110">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{B4093E93-E30E-4DA1-9FB3-12648466737E}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="BGM_Play" ID="{C48E0417-D971-412E-BF8B-D621296A9BB6}">
+					<ChildrenList>
+						<Action Name="" ID="{BA2DD25A-12CE-42CF-BF94-F16E8DB6C6BE}" ShortID="764704993">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BGM" ID="{D7A90B10-840F-41B4-9ECC-A55F48E388C7}" WorkUnitID="{A22E1718-E3A0-4F5C-92CC-99988786E627}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="BGM_Stop" ID="{95D460B7-991E-46D1-BECF-41C5738F472E}">
+					<ChildrenList>
+						<Action Name="" ID="{EB0510FF-6BDD-4E0A-AF0B-53896C9F0097}" ShortID="492024911">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BGM" ID="{D7A90B10-840F-41B4-9ECC-A55F48E388C7}" WorkUnitID="{A22E1718-E3A0-4F5C-92CC-99988786E627}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="BGM_Resume" ID="{DA68019C-C62D-46BB-80E3-2D0002D3720C}">
+					<ChildrenList>
+						<Action Name="" ID="{FEAA7DA7-6EB1-49F8-8191-CAEE2562951F}" ShortID="930635026">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="9"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BGM" ID="{D7A90B10-840F-41B4-9ECC-A55F48E388C7}" WorkUnitID="{A22E1718-E3A0-4F5C-92CC-99988786E627}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="BGM_Pause" ID="{E17ED302-0AA3-423F-BCA7-F581D0FB8E2A}">
+					<ChildrenList>
+						<Action Name="" ID="{FD6C7481-0DC9-4C53-BE77-EE25571A2F9F}" ShortID="498380969">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="7"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BGM" ID="{D7A90B10-840F-41B4-9ECC-A55F48E388C7}" WorkUnitID="{A22E1718-E3A0-4F5C-92CC-99988786E627}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>
