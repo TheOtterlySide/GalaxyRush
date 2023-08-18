@@ -109,6 +109,7 @@ WwiseUnityIntegration_*_Src.zip
 # Mac stuff
 .DS_store
 
+
 # Jetbrains Rider IDE (C# IDE), adds a plugin to Unity
 # Assets/Plugins/Editor.meta
 # Assets/Plugins/Editor/Jetbrains.meta
@@ -128,3 +129,4 @@ GalaxyRush_WwiseProject/GeneratedSoundBanks/Mac/MAIN.txt
 GalaxyRush_WwiseProject/GeneratedSoundBanks/Mac/MAIN.bnk
 GalaxyRush_WwiseProject/GeneratedSoundBanks/Mac/Init.txt
 GalaxyRush_WwiseProject/GeneratedSoundBanks/Mac/Init.bnk
+=======
