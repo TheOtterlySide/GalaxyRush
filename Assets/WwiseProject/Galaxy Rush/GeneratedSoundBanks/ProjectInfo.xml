@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ProjectInfo>
-	<Project Name="Galaxy Rush" GUID="{BA6B04BC-5D70-44EA-BC9E-FCFC41C547C3}" Generator="2022.1.5.8242"/>
+	<Project Name="Galaxy Rush" GUID="{BA6B04BC-5D70-44EA-BC9E-FCFC41C547C3}" Generator="2022.1.6.8263"/>
 	<CacheRoot>../.cache/</CacheRoot>
 	<Platforms>
 		<Platform Name="Mac" GUID="{BC13A76B-0963-4B24-BA94-057706FA454F}" BasePlatform="Mac" BasePlatformGUID="{9C6217D5-DD11-4795-87C1-6CE02853C540}" Path="Mac/"/>
@@ -9,5 +9,5 @@
 	<Languages>
 		<Language Name="English(US)" Id="684519430" GUID="{9FFD0114-76D7-4C74-A49E-1EEA03A76193}" Default="true" UseAsStandIn="true"/>
 	</Languages>
-	<FileHash>{6F8D35E7-E3DB-69E8-6022-59685AA362FA}</FileHash>
+	<FileHash>{72735C93-79D9-1B02-9140-3836D4D61885}</FileHash>
 </ProjectInfo>

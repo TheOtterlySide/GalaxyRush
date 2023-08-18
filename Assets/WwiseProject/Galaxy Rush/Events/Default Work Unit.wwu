@@ -56,6 +56,16 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="TEST" ID="{4A2894A2-F560-4509-924A-AECFD66D614F}">
+					<ChildrenList>
+						<Action Name="" ID="{1447456C-A74E-4D07-841D-70E09D1CA19D}" ShortID="935849960">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="7"/>
+							</PropertyList>
+							<ReferenceList/>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

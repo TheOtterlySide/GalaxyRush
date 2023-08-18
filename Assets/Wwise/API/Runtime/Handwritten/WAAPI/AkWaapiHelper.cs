@@ -490,6 +490,7 @@ public class WaapiKeywords
 		{ "States", "States"},
 		{ "SoundBanks", "SoundBanks"},
 		{ "Switches", "Switches"},
+		{ "Triggers", "Triggers"},
 		{ "Virtual Acoustics", "Virtual Acoustics"},
 	});
 

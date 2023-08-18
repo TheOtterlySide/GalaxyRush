@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ValidationCache Version="1" SchemaVersion="110">
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush_WwiseIntegrationTemp\GalaxyRush_WwiseProject\Virtual Acoustics\Default Work Unit.wwu" DateLow="1691239063" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush_WwiseIntegrationTemp\GalaxyRush_WwiseProject\Triggers\Default Work Unit.wwu" DateLow="1691239063" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush_WwiseIntegrationTemp\GalaxyRush_WwiseProject\Switches\Default Work Unit.wwu" DateLow="1691239063" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush_WwiseIntegrationTemp\GalaxyRush_WwiseProject\States\Default Work Unit.wwu" DateLow="1691239063" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush_WwiseIntegrationTemp\GalaxyRush_WwiseProject\Soundcaster Sessions\Default Work Unit.wwu" DateLow="1691239063" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush_WwiseIntegrationTemp\GalaxyRush_WwiseProject\SoundBanks\Default Work Unit.wwu" DateLow="1691239063" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush_WwiseIntegrationTemp\GalaxyRush_WwiseProject\Queries\Factory Queries.wwu" DateLow="1691238298" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush_WwiseIntegrationTemp\GalaxyRush_WwiseProject\Queries\Default Work Unit.wwu" DateLow="1691239063" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush_WwiseIntegrationTemp\GalaxyRush_WwiseProject\Presets\Factory Spatial Audio.wwu" DateLow="1691238298" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush_WwiseIntegrationTemp\GalaxyRush_WwiseProject\Presets\Default Work Unit.wwu" DateLow="1691239063" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush_WwiseIntegrationTemp\GalaxyRush_WwiseProject\Modulators\Default Work Unit.wwu" DateLow="1691239063" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush_WwiseIntegrationTemp\GalaxyRush_WwiseProject\Mixing Sessions\Default Work Unit.wwu" DateLow="1691239063" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush_WwiseIntegrationTemp\GalaxyRush_WwiseProject\Metadata\Default Work Unit.wwu" DateLow="1691239063" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush_WwiseIntegrationTemp\GalaxyRush_WwiseProject\Master-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1691239063" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush_WwiseIntegrationTemp\GalaxyRush_WwiseProject\Interactive Music Hierarchy\Default Work Unit.wwu" DateLow="1691239063" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush_WwiseIntegrationTemp\GalaxyRush_WwiseProject\Game Parameters\Default Work Unit.wwu" DateLow="1691239063" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush_WwiseIntegrationTemp\GalaxyRush_WwiseProject\GalaxyRush_WwiseProject.wproj" DateLow="1691239063" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush_WwiseIntegrationTemp\GalaxyRush_WwiseProject\Events\Default Work Unit.wwu" DateLow="1691239063" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush_WwiseIntegrationTemp\GalaxyRush_WwiseProject\Effects\Factory Effects.wwu" DateLow="1691238298" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush_WwiseIntegrationTemp\GalaxyRush_WwiseProject\Effects\Default Work Unit.wwu" DateLow="1691239063" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush_WwiseIntegrationTemp\GalaxyRush_WwiseProject\Dynamic Dialogue\Default Work Unit.wwu" DateLow="1691239063" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush_WwiseIntegrationTemp\GalaxyRush_WwiseProject\Conversion Settings\Factory Conversion Settings.wwu" DateLow="1691238298" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush_WwiseIntegrationTemp\GalaxyRush_WwiseProject\Conversion Settings\Default Work Unit.wwu" DateLow="1691239063" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush_WwiseIntegrationTemp\GalaxyRush_WwiseProject\Control Surface Sessions\Default Work Unit.wwu" DateLow="1691239063" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush_WwiseIntegrationTemp\GalaxyRush_WwiseProject\Audio Devices\Default Work Unit.wwu" DateLow="1691239063" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush_WwiseIntegrationTemp\GalaxyRush_WwiseProject\Attenuations\Default Work Unit.wwu" DateLow="1691239063" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush_WwiseIntegrationTemp\GalaxyRush_WwiseProject\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1691239063" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush\GalaxyRush_WwiseProject\Virtual Acoustics\Default Work Unit.wwu" DateLow="1691239104" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush\GalaxyRush_WwiseProject\Triggers\Default Work Unit.wwu" DateLow="1691239104" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush\GalaxyRush_WwiseProject\Switches\Default Work Unit.wwu" DateLow="1691239104" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush\GalaxyRush_WwiseProject\States\Default Work Unit.wwu" DateLow="1691239104" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush\GalaxyRush_WwiseProject\Soundcaster Sessions\Default Work Unit.wwu" DateLow="1691239104" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush\GalaxyRush_WwiseProject\SoundBanks\Default Work Unit.wwu" DateLow="1691325027" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush\GalaxyRush_WwiseProject\Queries\Factory Queries.wwu" DateLow="1691239104" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush\GalaxyRush_WwiseProject\Queries\Default Work Unit.wwu" DateLow="1691239104" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush\GalaxyRush_WwiseProject\Presets\Factory Spatial Audio.wwu" DateLow="1691239104" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush\GalaxyRush_WwiseProject\Presets\Default Work Unit.wwu" DateLow="1691239104" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush\GalaxyRush_WwiseProject\Modulators\Default Work Unit.wwu" DateLow="1691239104" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush\GalaxyRush_WwiseProject\Mixing Sessions\Default Work Unit.wwu" DateLow="1691239104" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush\GalaxyRush_WwiseProject\Metadata\Default Work Unit.wwu" DateLow="1691239104" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush\GalaxyRush_WwiseProject\Master-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1691239104" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush\GalaxyRush_WwiseProject\Interactive Music Hierarchy\Default Work Unit.wwu" DateLow="1691323565" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush\GalaxyRush_WwiseProject\Game Parameters\Default Work Unit.wwu" DateLow="1691239104" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush\GalaxyRush_WwiseProject\GalaxyRush_WwiseProject.wproj" DateLow="1691239104" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush\GalaxyRush_WwiseProject\GalaxyRush_WwiseProject.crossover.wsettings" DateLow="1691338326" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush\GalaxyRush_WwiseProject\Events\Default Work Unit.wwu" DateLow="1691323776" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush\GalaxyRush_WwiseProject\Effects\Factory Effects.wwu" DateLow="1691239104" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush\GalaxyRush_WwiseProject\Effects\Default Work Unit.wwu" DateLow="1691239104" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush\GalaxyRush_WwiseProject\Dynamic Dialogue\Default Work Unit.wwu" DateLow="1691239104" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush\GalaxyRush_WwiseProject\Conversion Settings\Factory Conversion Settings.wwu" DateLow="1691239104" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush\GalaxyRush_WwiseProject\Conversion Settings\Default Work Unit.wwu" DateLow="1691325027" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush\GalaxyRush_WwiseProject\Control Surface Sessions\Default Work Unit.wwu" DateLow="1691323254" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush\GalaxyRush_WwiseProject\Audio Devices\Default Work Unit.wwu" DateLow="1691239104" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush\GalaxyRush_WwiseProject\Attenuations\Default Work Unit.wwu" DateLow="1691239104" DateHigh="0"/>
+	<ValidationCacheItem File="Y:\Developing\GAMEDEV\GalaxyRush\GalaxyRush_WwiseProject\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1691239104" DateHigh="0"/>
+</ValidationCache>

@@ -136,7 +136,7 @@
 				</AcousticTexture>
 			</AcousticTextures>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{B39AEA26-60CC-F0EF-1E57-6D7D639900C0}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{4042BDB1-4633-3D14-16F2-1AAA7CDC13D3}">
 			<ShortName>MAIN</ShortName>
 			<Path>MAIN.bnk</Path>
 			<Media>
@@ -154,8 +154,9 @@
 					</MediaRefs>
 				</Event>
 				<Event Id="2090192256" Name="BGM_STOP" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="3157003241" Name="TEST" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{07124562-49CB-5C77-F06A-92CF6E2008DD}</FileHash>
+	<FileHash>{E92C4A70-AC98-FF06-4375-FB3E89A320F4}</FileHash>
 </SoundBanksInfo>
