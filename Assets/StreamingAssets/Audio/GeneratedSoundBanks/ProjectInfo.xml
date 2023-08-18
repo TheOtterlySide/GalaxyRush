@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProjectInfo>
+	<Project Name="GalaxyRush_WwiseProject" GUID="{B50FC819-288A-4E04-8162-6021596333BD}" Generator="2022.1.6.8263"/>
+	<CacheRoot>../../../../GalaxyRush_WwiseProject/.cache/</CacheRoot>
+	<Platforms>
+		<Platform Name="Mac" GUID="{AE17E233-8E3E-4BCA-A648-FE56DCC5C987}" BasePlatform="Mac" BasePlatformGUID="{9C6217D5-DD11-4795-87C1-6CE02853C540}" Path="../../../../GalaxyRush_WwiseProject/GeneratedSoundBanks/Mac/"/>
+		<Platform Name="Windows" GUID="{6C0295E4-F338-449D-B121-C4B41B625802}" BasePlatform="Windows" BasePlatformGUID="{6E0CB257-C6C8-4C5C-8366-2740DFC441EB}" Path="../../../../GalaxyRush_WwiseProject/GeneratedSoundBanks/Windows/"/>
+	</Platforms>
+	<Languages>
+		<Language Name="English(US)" Id="684519430" GUID="{D15F0287-EB6E-4DC3-BD89-706E37EDA428}" Default="true" UseAsStandIn="true"/>
+	</Languages>
+	<FileHash>{FC85B2C6-2B22-DF0E-6F47-065FB5283F42}</FileHash>
+</ProjectInfo>
