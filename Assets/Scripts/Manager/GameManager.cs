@@ -81,15 +81,19 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        SetupWalls();
+        fillTextList();
+        
         GameRunning = true;
         inputFieldPlayName = GO_inputfield.GetComponent<InputField>();
         playerLife_1 = playerLife1.GetComponent<SpriteRenderer>();
         playerLife_2 = playerLife2.GetComponent<SpriteRenderer>();
         playerLife_3 = playerLife3.GetComponent<SpriteRenderer>();
-        SetupWalls();
-        fillTextList();
+        
         SpawnManager.gameRunning = true;
         playerObject.gameRunning = true;
+        Pause(false);
+        
         audioManager.Start();
     }
 
